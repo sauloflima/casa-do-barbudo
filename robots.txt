@@ -4,4 +4,4 @@ Allow: /
 # Pagina de politica: util para quem visita, sem valor de busca.
 Disallow: /privacidade.html
 
-Sitemap: https://casadobarbudo.com.br/sitemap.xml
+Sitemap: https://sauloflima.github.io/casa-do-barbudo/sitemap.xml
