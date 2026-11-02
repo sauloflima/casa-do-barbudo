@@ -24,3 +24,5 @@
 .curso-photo-stage picture { display: block; }
 .curso-cover img.curso-photo-aula { width: 100%; height: clamp(420px, 45vw, 620px); object-fit: cover; object-position: 50% 42%; }
 .curso-cover--aula { max-width: 450px; justify-self: center; width: 100%; }
+
+.curso-title-line { display: block; margin-top: 16px; font-family: var(--font-body); font-size: clamp(1.25rem, 2vw, 1.75rem); font-weight: 600; line-height: 1.35; color: var(--color-gold-light); }
