@@ -50,3 +50,6 @@ body:has(.site-nav.is-open) .whatsapp-float,
 body:has(dialog[open]) .whatsapp-float { display: none; }
 
 .whatsapp-float.is-context-hidden { display: none; }
+
+/* Em telas com conteúdo próximo à borda, o atalho não deve cobrir a leitura. */
+@media (max-width: 85em) { .whatsapp-float { display: none; } }

@@ -1,3 +1,4 @@
+import { track } from './analytics.js';
 import { catalogo } from '../catalog.js';
 import { getWhatsappLink } from '../config.js';
 
@@ -19,12 +20,15 @@ export function initBooking() {
     const label = link.dataset.analyticsLabel;
     form.elements.servico.value = [...form.elements.servico.options].some(o => o.value === label) ? label : '';
     dialog.showModal();
+    track('booking_open');
   });
   dialog.querySelector('.careers-close').addEventListener('click', () => dialog.close());
   dialog.addEventListener('close', () => opener?.focus());
   form.addEventListener('submit', event => {
     event.preventDefault();
     if (!form.reportValidity()) return;
+    track('whatsapp_click', { rotulo: 'Consulta de horário' });
+    track('booking_request');
     window.open(getWhatsappLink(`Olá! Gostaria de consultar um horário na Casa do Barbudo.\nServiço: ${form.elements.servico.value}\nProfissional: ${form.elements.profissional.value}\nPodem me informar os horários disponíveis?`), '_blank', 'noopener,noreferrer');
   });
 }

@@ -26,3 +26,24 @@
 .curso-cover--aula { max-width: 450px; justify-self: center; width: 100%; }
 
 .curso-title-line { display: block; margin-top: 16px; font-family: var(--font-body); font-size: clamp(1.25rem, 2vw, 1.75rem); font-weight: 600; line-height: 1.35; color: var(--color-gold-light); }
+
+.curso-informacoes .container { max-width: 860px; }
+.curso-informacoes h2 { margin-block: 12px 20px; }
+.curso-informacoes p { max-width: 65ch; }
+.curso-informacoes .btn { margin-top: 24px; }
+@media (max-width: 47.999em) {
+  .curso-hero { padding-block: 24px 40px; }
+  .curso-hero-grid { gap: 20px; }
+  .curso-copy { display: contents; }
+  .curso-copy > .eyebrow { order: 1; }
+  .curso-copy > h1 { order: 2; font-size: clamp(2rem,8vw,2.5rem); }
+  .curso-copy > .curso-lead { order: 3; font-size: 1.2rem; }
+  .curso-cover--aula { order: 4; }
+  .curso-copy > p:not([class]) { order: 5; }
+  .curso-copy > .btn { order: 6; justify-self: start; }
+  .curso-copy > .curso-note { order: 7; }
+  .curso-title-line { margin-top: 10px; font-size: 1.1rem; }
+  .curso-cover img.curso-photo-aula { height: 390px; }
+  .curso-topic { padding: 20px 0; }
+  .curso-topics { gap: 12px; }
+}

@@ -47,6 +47,8 @@ export function track(nomeDoEvento, detalhe = {}) {
 // quando esses módulos redesenham a grade.
 export function initAnalyticsClicks() {
   document.addEventListener('click', (evento) => {
+    // Abrir o seletor de atendimento ainda não é uma saída para o WhatsApp.
+    if (evento.defaultPrevented) return;
     const linkWhatsapp = evento.target.closest('[data-whatsapp-link]');
     if (linkWhatsapp) {
       track('whatsapp_click', { rotulo: linkWhatsapp.dataset.analyticsLabel || null });

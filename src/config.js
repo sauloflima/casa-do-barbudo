@@ -63,7 +63,11 @@ export const business = {
 
 // Monta o link do WhatsApp com a mensagem pronta (URL-encoded).
 export function getWhatsappLink(customMessage) {
-  const text = encodeURIComponent(customMessage || business.whatsappMessage);
+  // A origem vai somente no rascunho revisado pelo cliente, sem rastreador externo.
+  const pages = { 'index.html': 'Início', 'servicos.html': 'Serviços', 'cursos.html': 'Cursos', 'produtos.html': 'Produtos', 'assinaturas.html': 'Assinaturas', 'equipe.html': 'Equipe', 'localizacao.html': 'Localização', 'sobre.html': 'Sobre', 'galeria.html': 'Galeria' };
+  const file = typeof location === 'undefined' ? '' : location.pathname.split('/').pop() || 'index.html';
+  const origin = pages[file];
+  const text = encodeURIComponent(`${customMessage || business.whatsappMessage}\n\nOrigem: site Casa do Barbudo${origin ? ' · ' + origin : ''}.`);
   return `https://wa.me/${business.whatsappNumber}?text=${text}`;
 }
 

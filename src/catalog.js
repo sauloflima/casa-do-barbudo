@@ -9,7 +9,7 @@ export const catalogo = {
       "servicos": [
         {
           "id": "corte-diversos",
-          "nome": "Corte (diversos)",
+          "nome": "Corte masculino",
           "preco": 35.0,
           "descricao": null,
           "duracaoMin": null,
@@ -25,7 +25,7 @@ export const catalogo = {
         },
         {
           "id": "acabamento-perfil",
-          "nome": "Acabamento (perfil)",
+          "nome": "Acabamento e contorno",
           "preco": 10.0,
           "descricao": null,
           "duracaoMin": null,
@@ -47,7 +47,7 @@ export const catalogo = {
         },
         {
           "id": "combo-corte-barba",
-          "nome": "Combo Corte + Barba",
+          "nome": "Corte + barba",
           "preco": 60.0,
           "descricao": "Corte + barba",
           "duracaoMin": null,
@@ -71,7 +71,7 @@ export const catalogo = {
           "id": "combo-skin",
           "nome": "Combo Skin",
           "preco": 40.0,
-          "descricao": null,
+          "descricao": "Consulte com a equipe quais cuidados estão incluídos neste combo antes de agendar.",
           "duracaoMin": null,
           "foto": "./images/servicos/combo-skin.jpg"
         },
@@ -101,7 +101,7 @@ export const catalogo = {
         },
         {
           "id": "sobrancelha-navalha",
-          "nome": "Sobrancelha (navalha)",
+          "nome": "Sobrancelha na navalha",
           "preco": 10.0,
           "descricao": null,
           "duracaoMin": null,
@@ -123,7 +123,7 @@ export const catalogo = {
         },
         {
           "id": "luzes-reflexo",
-          "nome": "Luzes / reflexo",
+          "nome": "Luzes e reflexos",
           "preco": 100.0,
           "descricao": null,
           "duracaoMin": null,
