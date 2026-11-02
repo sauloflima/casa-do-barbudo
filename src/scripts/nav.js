@@ -97,7 +97,14 @@ export function initNav() {
       isOpen ? closeNav({ restoreFocus: true }) : openNav();
     });
 
-    navLinks.forEach((link) => link.addEventListener('click', () => closeNav()));
+    navLinks.forEach((link) => link.addEventListener('click', event => {
+      if (isDesktop() || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) return;
+      // Fixar o destino antes de recolher os detalhes evita reativação do link sob o toque no Safari.
+      event.preventDefault();
+      const destination = link.href;
+      closeNav();
+      window.location.assign(destination);
+    }));
 
     document.addEventListener('keydown', (event) => {
       const openGroup = groups.find(group => group.open);
