@@ -360,3 +360,6 @@
     transform: none;
   }
 }
+
+/* No celular, exibir a fachada inteira em vez do zoom que corta a entrada. */
+@media (max-width: 47.999em) { .hero-photo { height: 100%; object-fit: contain; object-position: center bottom; } }

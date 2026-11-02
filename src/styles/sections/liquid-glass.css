@@ -56,3 +56,7 @@
     backdrop-filter: none;
   }
 }
+
+/* Sobre papel, manter o fundo claro que sustenta o contraste do texto escuro. */
+.on-paper .btn-outline { background: transparent; border-color: rgba(23,20,15,.4); box-shadow: none; -webkit-backdrop-filter: none; backdrop-filter: none; }
+.on-paper .btn-outline:hover { background: rgba(23,20,15,.04); }

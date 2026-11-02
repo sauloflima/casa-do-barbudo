@@ -69,3 +69,7 @@
   .curso-copy > .btn { order: 7; }
   .curso-copy > .curso-note { order: 8; }
 }
+
+@media (max-width: 47.999em) {
+  .curso-cover img.curso-photo-aula { height: auto; aspect-ratio: auto; object-fit: contain; }
+}

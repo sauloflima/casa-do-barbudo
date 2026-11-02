@@ -46,7 +46,10 @@ p {
 /* Foco visível para navegação por teclado */
 a:focus-visible,
 button:focus-visible,
-input:focus-visible {
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+summary:focus-visible {
   outline: 2px solid var(--color-gold-light);
   outline-offset: 3px;
 }

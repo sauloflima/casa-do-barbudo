@@ -81,3 +81,10 @@
     margin-inline: auto;
   }
 }
+
+@media (max-width: 47.999em) {
+  .team-photo { aspect-ratio: auto; }
+  .team-photo picture { display: block; }
+  .team-photo img { height: auto; object-fit: contain; }
+  .team-card:hover img { transform: none; }
+}

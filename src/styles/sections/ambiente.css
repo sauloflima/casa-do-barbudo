@@ -50,3 +50,5 @@
 .home-catalogo:hover { border-color: var(--color-gold); color: var(--color-cream); }
 .home-catalogo p:not(.eyebrow) { color: var(--color-cream-dim); }
 .home-catalogo span { color: var(--color-gold-light); margin-top: auto; font-weight: 600; }
+
+@media (max-width: 47.999em) { .ambiente-figure img { height: auto; aspect-ratio: auto; object-fit: contain; } }
