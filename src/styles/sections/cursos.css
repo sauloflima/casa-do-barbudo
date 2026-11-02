@@ -18,3 +18,9 @@
   .curso-topics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .curso-topic:last-child { grid-column: 1 / -1; }
 }
+
+/* Enquadramento concentra a foto no instrutor e na demonstração. */
+.curso-photo-stage { position: relative; }
+.curso-photo-stage picture { display: block; }
+.curso-cover img.curso-photo-aula { width: 100%; height: clamp(420px, 45vw, 620px); object-fit: cover; object-position: 50% 42%; }
+.curso-cover--aula { max-width: 450px; justify-self: center; width: 100%; }
