@@ -21,15 +21,12 @@
   box-shadow: none;
 }
 
-/* aspect-ratio fixo aqui (o .about-figure não usa) porque esta foto é
-   panorâmica e do espaço, não um retrato: recortar em 16/9 é o enquadramento
-   pretendido, e a proporção declarada também evita salto de layout enquanto a
-   imagem carrega. */
+/* A proporção vem do arquivo selecionado pelo picture, sem recortar o salão. */
 .ambiente-figure img {
   width: 100%;
   height: auto;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
+  aspect-ratio: auto;
+  object-fit: contain;
 }
 
 .ambiente-text {

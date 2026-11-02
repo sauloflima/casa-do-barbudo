@@ -6,7 +6,7 @@
 .curso-copy > p { max-width: 54ch; }
 .curso-note { font-size: var(--text-88); color: var(--color-cream-dim); }
 .curso-cover { position: relative; overflow: hidden; border-radius: 24px; border: 1px solid var(--color-gold-dim); }
-.curso-cover img { width: 100%; height: clamp(360px, 42vw, 600px); object-fit: cover; }
+.curso-cover img { width: 100%; height: auto; aspect-ratio: auto; object-fit: contain; }
 .curso-cover figcaption { padding: 12px 20px; background: var(--color-ink-soft); font-size: var(--text-85); color: var(--color-gold-light); }
 .curso-programa { background: var(--color-ink-soft); border-block: 1px solid var(--color-ink-line); }
 .curso-topics { display: grid; gap: 24px; }
@@ -22,7 +22,7 @@
 /* Enquadramento concentra a foto no instrutor e na demonstração. */
 .curso-photo-stage { position: relative; }
 .curso-photo-stage picture { display: block; }
-.curso-cover img.curso-photo-aula { width: 100%; height: clamp(420px, 45vw, 620px); object-fit: cover; object-position: 50% 42%; }
+.curso-cover img.curso-photo-aula { width: 100%; height: auto; aspect-ratio: auto; object-fit: contain; }
 .curso-cover--aula { max-width: 450px; justify-self: center; width: 100%; }
 
 .curso-title-line { display: block; margin-top: 16px; font-family: var(--font-body); font-size: clamp(1.25rem, 2vw, 1.75rem); font-weight: 600; line-height: 1.35; color: var(--color-gold-light); }
@@ -43,7 +43,6 @@
   .curso-copy > .btn { order: 6; justify-self: start; }
   .curso-copy > .curso-note { order: 7; }
   .curso-title-line { margin-top: 10px; font-size: 1.1rem; }
-  .curso-cover img.curso-photo-aula { height: 390px; }
   .curso-topic { padding: 20px 0; }
   .curso-topics { gap: 12px; }
 }
