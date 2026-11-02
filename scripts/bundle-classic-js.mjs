@@ -8,6 +8,7 @@
 // tanto em http(s) quanto em file://. O CSS não precisa desse tratamento:
 // <link rel="stylesheet"> carrega normalmente via file://.
 import { build } from 'esbuild';
+import { createHash } from 'node:crypto';
 import { readFile, writeFile, unlink, readdir } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import path from 'node:path';
@@ -33,7 +34,7 @@ const ignoreCssPlugin = {
   },
 };
 
-await build({
+const bundle = await build({
   entryPoints: [path.join(root, 'src/scripts/main.js')],
   bundle: true,
   format: 'iife',
@@ -41,8 +42,14 @@ await build({
   minify: true,
   legalComments: 'none',
   outfile: outFile,
+  write: false,
   plugins: [ignoreCssPlugin],
 });
+
+// O nome acompanha o conteúdo para o Safari não reaproveitar uma versão antiga.
+const content = bundle.outputFiles[0].contents;
+const bundleName = `main-classic-${createHash('sha256').update(content).digest('hex').slice(0, 12)}.js`;
+await writeFile(path.join(assetsDir, bundleName), content);
 
 // Troca o <script type="module" ...> pelo bundle clássico em cada página, e
 // coleta os nomes dos chunks ESM antigos (agora órfãos) para removê-los.
@@ -70,7 +77,7 @@ for (const file of htmlFiles) {
     console.warn(`Aviso: nenhum <script type="module"> encontrado em ${file}`);
   } else {
     orphanedChunks.add(match[1]);
-    html = html.replace(match[0], '<script defer src="./assets/main.js"></script>');
+    html = html.replace(match[0], `<script defer src="./assets/${bundleName}"></script>`);
   }
 
   const cssMatches = html.match(localCssLinkRe) ?? [];
@@ -90,4 +97,4 @@ for (const chunk of orphanedChunks) {
   if (existsSync(chunkPath)) await unlink(chunkPath);
 }
 
-console.log(`✓ Bundle clássico gerado: dist/assets/main.js (${orphanedChunks.size} chunk(s) ESM removido(s))`);
+console.log(`✓ Bundle clássico gerado: dist/assets/${bundleName} (${orphanedChunks.size} chunk(s) ESM removido(s))`);
