@@ -27,29 +27,31 @@ export function initNav() {
   const navLinks = nav ? Array.from(nav.querySelectorAll('.nav-links a')) : [];
 
   const groups = nav ? Array.from(nav.querySelectorAll('.nav-group')) : [];
-  const closeGroups = () => groups.forEach(group => { group.open = false; });
+  const setGroup = (group, open) => {
+    group.toggleAttribute('open', open);
+    group.querySelector('.nav-group-toggle').setAttribute('aria-expanded', String(open));
+    group.querySelector('.nav-submenu').hidden = !open;
+  };
+  const closeGroups = () => groups.forEach(group => setGroup(group, false));
   groups.forEach(group => {
     let openedByHover = false;
-    group.querySelector('summary').addEventListener('click', event => {
-      // O primeiro clique após o hover mantém o painel aberto.
-      if (openedByHover && group.open) event.preventDefault();
+    const button = group.querySelector('.nav-group-toggle');
+    button.addEventListener('click', () => {
+      const open = openedByHover || !group.hasAttribute('open');
       openedByHover = false;
-    });
-    group.addEventListener('toggle', () => {
-      if (group.open) groups.filter(other => other !== group).forEach(other => { other.open = false; });
+      groups.forEach(other => setGroup(other, other === group && open));
     });
     group.addEventListener('pointerenter', event => {
-      if (event.pointerType === 'mouse' && matchMedia('(min-width: 75em)').matches && !group.open) {
+      if (event.pointerType === 'mouse' && matchMedia('(min-width: 75em)').matches && !group.hasAttribute('open')) {
         openedByHover = true;
-        group.open = true;
+        groups.forEach(other => setGroup(other, other === group));
       }
     });
     group.addEventListener('pointerleave', () => {
-      if (matchMedia('(min-width: 75em)').matches && !group.contains(document.activeElement)) group.open = false;
+      if (matchMedia('(min-width: 75em)').matches && !group.contains(document.activeElement)) setGroup(group, false);
     });
     group.addEventListener('focusout', event => {
-      // No celular, mudar foco pode anteceder o toque; fechar só por clique ou Escape.
-      if (matchMedia('(min-width: 75em)').matches && event.relatedTarget && !group.contains(event.relatedTarget)) group.open = false;
+      if (matchMedia('(min-width: 75em)').matches && event.relatedTarget && !group.contains(event.relatedTarget)) setGroup(group, false);
     });
   });
   document.addEventListener('click', event => {
@@ -107,10 +109,10 @@ export function initNav() {
     }));
 
     document.addEventListener('keydown', (event) => {
-      const openGroup = groups.find(group => group.open);
+      const openGroup = groups.find(group => group.hasAttribute('open'));
       if (event.key === 'Escape' && openGroup) {
-        openGroup.open = false;
-        openGroup.querySelector('summary').focus();
+        setGroup(openGroup, false);
+        openGroup.querySelector('.nav-group-toggle').focus();
         event.preventDefault();
         return;
       }
