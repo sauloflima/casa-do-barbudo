@@ -1,21 +1,11 @@
 import { getWhatsappLink } from '../config.js';
 
 export function initCareers() {
-  const dialog = document.querySelector('#careers-dialog');
-  if (!dialog || typeof dialog.showModal !== 'function') return;
-  const form = dialog.querySelector('form');
+  const form = document.querySelector('[data-careers-form]');
+  if (!form) return;
   const experience = form.elements.experiencia;
   const duration = form.elements.tempo;
-  let opener;
-  document.querySelectorAll('[data-careers-open]').forEach(link => {
-    link.addEventListener('click', event => {
-      event.preventDefault();
-      opener = link;
-      dialog.showModal();
-    });
-  });
-  dialog.querySelector('[data-careers-close]').addEventListener('click', () => dialog.close());
-  dialog.addEventListener('close', () => opener?.focus());
+  form.querySelector('fieldset').disabled = false;
   experience.addEventListener('change', () => {
     const experienced = experience.value === 'Sim';
     duration.closest('label').hidden = !experienced;

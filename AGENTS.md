@@ -28,3 +28,6 @@ Usuário autorizou corrigir avaliação visual/comercial: atalho WhatsApp sem so
 
 ## Refino de experiência — 02/11/2026
 Aprovados: compactar espaços no celular sem recortar fotos, recolher balão do curso durante a navegação mantendo logo/preço/fechamento, prévia de três serviços da fonte catalog.js na home e padronização como curso presencial. Preservar menu, transparência, paleta, formulários e fotografias completas. Fotos adicionais e depoimentos de alunos dependem de registros reais fornecidos pelo usuário. Build e verificador de conteúdo incluem a prévia da home. Publicação na continuidade da autorização vigente.
+
+## Trabalhe conosco — página própria em 02/11/2026
+Área transferida para trabalhe-conosco.html, acessada diretamente pelo menu e rodapés. Reutilizar o material existente e preservar nome completo, cidade, idade e experiência, com tempo obrigatório se sim. Formulário inline sem persistência, sem envio de campos a analytics e mensagem no WhatsApp para revisão do candidato. Não inventar vagas, condições ou contratação. O build deve incluir a página e o sitemap; manter estilos do diálogo de agendamento, que compartilha classes com o formulário. Publicação autorizada na continuidade desta sessão.

@@ -17,6 +17,7 @@ export default defineConfig({
         servicos: 'servicos.html',
         equipe: 'equipe.html',
         cursos: 'cursos.html',
+        carreiras: 'trabalhe-conosco.html',
         galeria: 'galeria.html',
         localizacao: 'localizacao.html',
         assinaturas: 'assinaturas.html',
