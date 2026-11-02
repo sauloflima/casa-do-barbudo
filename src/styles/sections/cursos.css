@@ -80,3 +80,16 @@
   .curso-copy > .curso-note { order: 7; }
   .curso-cover--aula { order: 8; }
 }
+
+/* Proporção original: os registros mostram todos os participantes. */
+.curso-registros { border-top: 1px solid var(--color-ink-line); }
+.curso-registros .section-head { max-width: 720px; }
+.curso-registros-grid { display: grid; gap: 32px; align-items: start; }
+.curso-registro { min-width: 0; }
+.curso-registro picture { display: block; overflow: hidden; border-radius: 16px; }
+.curso-registro img { display: block; width: 100%; height: auto; aspect-ratio: auto; object-fit: contain; }
+.curso-registro figcaption { padding-top: 16px; }
+.curso-registro h3 { font-size: 1.05rem; line-height: 1.4; margin-bottom: 6px; }
+.curso-registro figcaption p { font-size: .9rem; max-width: 42ch; }
+@media (min-width: 48em) { .curso-registros-grid { grid-template-columns: repeat(2, minmax(0,1fr)); } }
+@media (min-width: 64em) { .curso-registros-grid { grid-template-columns: 1fr 1fr 1.15fr; gap: 28px; } }
