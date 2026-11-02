@@ -44,11 +44,13 @@ button {
   cursor: pointer;
 }
 
-/* Respeita preferência do usuário por menos movimento */
+/* O briefing mantém apenas as entradas data-reveal; os demais efeitos respeitam a preferência. */
 @media (prefers-reduced-motion: reduce) {
   * {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
+  }
+  *:not([data-reveal]) {
     transition-duration: 0.01ms !important;
   }
 }

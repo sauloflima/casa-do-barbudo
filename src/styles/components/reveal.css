@@ -26,11 +26,3 @@
 .js [data-reveal-delay='2'] { transition-delay: var(--stagger-2); }
 .js [data-reveal-delay='3'] { transition-delay: var(--stagger-3); }
 
-/* Sem animação para quem pediu menos movimento: conteúdo já nasce visível. */
-@media (prefers-reduced-motion: reduce) {
-  .js [data-reveal] {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
-}

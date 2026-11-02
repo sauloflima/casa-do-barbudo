@@ -1,6 +1,6 @@
 // Revela elementos [data-reveal] conforme entram na tela (fade + leve subida).
 // Usa IntersectionObserver; o efeito visual em si vive no CSS (reveal.css),
-// que também desliga tudo em prefers-reduced-motion.
+// com entrada de 800 ms, inclusive sob prefers-reduced-motion, conforme o briefing.
 
 export function initReveal() {
   const items = document.querySelectorAll('[data-reveal]');
@@ -16,9 +16,7 @@ export function initReveal() {
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add('is-visible');
-        observer.unobserve(entry.target);
+        entry.target.classList.toggle('is-visible', entry.isIntersecting);
       });
     },
     { rootMargin: '0px 0px -10% 0px', threshold: 0.1 }
