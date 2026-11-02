@@ -48,8 +48,8 @@ export function initNav() {
       if (matchMedia('(min-width: 75em)').matches && !group.contains(document.activeElement)) group.open = false;
     });
     group.addEventListener('focusout', event => {
-      // Safari pode omitir o próximo foco ao tocar num link; não recolher antes do clique.
-      if (event.relatedTarget && !group.contains(event.relatedTarget)) group.open = false;
+      // No celular, mudar foco pode anteceder o toque; fechar só por clique ou Escape.
+      if (matchMedia('(min-width: 75em)').matches && event.relatedTarget && !group.contains(event.relatedTarget)) group.open = false;
     });
   });
   document.addEventListener('click', event => {
