@@ -17,8 +17,8 @@
   margin-top: var(--space-lg);
   border-radius: var(--radius-md);
   overflow: hidden;
-  border: 1px solid var(--color-ink-line);
-  box-shadow: var(--shadow-soft);
+  border: 0;
+  box-shadow: none;
 }
 
 /* aspect-ratio fixo aqui (o .about-figure não usa) porque esta foto é

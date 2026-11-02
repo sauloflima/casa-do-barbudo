@@ -18,7 +18,7 @@
 //
 // Se um dia o domínio mudar, o ajuste é só aqui: rode "npm run sitemap" de
 // novo para regenerar sitemap.xml e robots.txt com o novo endereço.
-export const siteUrl = 'https://casadobarbudo.com.br';
+export const siteUrl = 'https://sauloflima.github.io/casa-do-barbudo';
 
 export const business = {
   name: 'Casa do Barbudo Barbearia',
