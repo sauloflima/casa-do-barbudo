@@ -1,0 +1,70 @@
+/* ============================================================================
+   PONTO DE ENTRADA ÚNICO DO CSS
+   ----------------------------------------------------------------------------
+   Sistema em camadas (CSS Cascade Layers). A ordem de prioridade é definida
+   por esta declaração, não pela ordem dos @import nem pela especificidade
+   dos seletores: uma regra em "components" sempre perde para uma regra
+   equivalente em "sections", não importa qual arquivo foi importado depois.
+
+   reset      → normaliza o navegador, sem decisão de marca.
+   tokens     → paleta bruta + tokens semânticos + escalas (tipografia,
+                espaço, borda, sombra, movimento, container, z-index).
+   base       → estilo padrão dos elementos HTML puros.
+   layout     → primitivas estruturais (.container, section, .page-main).
+   components → peças de UI reutilizáveis entre seções (botão, cabeçalho de
+                seção, breadcrumb, cabeçalho do site, rodapé, animação de
+                entrada, botão flutuante, aviso de configuração).
+   sections   → estilo específico de cada seção de conteúdo da página.
+   utilities  → classes de propósito único (ex.: .visually-hidden).
+   overrides  → exceções pontuais. Vazia por padrão.
+   ============================================================================ */
+
+@layer reset, tokens, base, layout, components, sections, utilities, overrides;
+
+@import './reset.css' layer(reset);
+
+@import './tokens/colors-raw.css' layer(tokens);
+@import './tokens/colors-semantic.css' layer(tokens);
+@import './tokens/typography.css' layer(tokens);
+@import './tokens/spacing.css' layer(tokens);
+@import './tokens/radius.css' layer(tokens);
+@import './tokens/shadow.css' layer(tokens);
+@import './tokens/motion.css' layer(tokens);
+@import './tokens/container.css' layer(tokens);
+@import './tokens/z-index.css' layer(tokens);
+
+@import './base.css' layer(base);
+
+@import './layout.css' layer(layout);
+
+@import './components/buttons.css' layer(components);
+@import './components/section-heading.css' layer(components);
+@import './components/breadcrumb.css' layer(components);
+@import './components/section-cta.css' layer(components);
+@import './components/reveal.css' layer(components);
+@import './components/whatsapp-float.css' layer(components);
+@import './components/config-notice.css' layer(components);
+@import './components/header.css' layer(components);
+@import './components/footer.css' layer(components);
+
+@import './sections/hero.css' layer(sections);
+@import './sections/about.css' layer(sections);
+@import './sections/faixa.css' layer(sections);
+@import './sections/ambiente.css' layer(sections);
+/* services.css continua importado: a Home não tem mais o teaser de Serviços
+   (Etapa 8A), mas servicos.html usa estas regras. */
+@import './sections/services.css' layer(sections);
+@import './sections/catalogo.css' layer(sections);
+@import './sections/produtos.css' layer(sections);
+@import './sections/team.css' layer(sections);
+@import './sections/gallery.css' layer(sections);
+@import './sections/reviews.css' layer(sections);
+@import './sections/location.css' layer(sections);
+@import './sections/cta-final.css' layer(sections);
+@import './sections/careers.css' layer(sections);
+@import './sections/cursos.css' layer(sections);
+@import './sections/liquid-glass.css' layer(sections);
+
+@import './utilities.css' layer(utilities);
+
+@import './overrides.css' layer(overrides);

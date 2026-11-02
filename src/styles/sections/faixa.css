@@ -1,0 +1,102 @@
+/* ============================================================================
+   SEÇÃO: Faixa de frases em movimento (Etapa 8A)
+   ----------------------------------------------------------------------------
+   Uma tira que desliza devagar entre a seção do Diego e o bloco de Corte, para
+   quebrar o ritmo de duas colunas sem virar carrossel: não tem controles, não
+   troca de slide, não salta. É só um deslocamento contínuo.
+
+   Como o laço fecha: o HTML traz o mesmo grupo de frases duas vezes (a segunda
+   é aria-hidden). A tira desliza exatamente metade da própria largura, ou seja,
+   um grupo inteiro, e reinicia. No ponto de reinício o que está na tela é
+   idêntico ao quadro anterior, então não aparece emenda.
+
+   Movimento em CSS puro, sem JS e sem biblioteca.
+   ============================================================================ */
+
+.faixa {
+  /* Bem mais apertado que o padrão de seção: é uma tira, não um bloco. */
+  padding-block: var(--space-xs);
+  background: var(--color-ink-soft);
+  border-block: 1px solid var(--color-ink-line);
+}
+
+/* Recorta o excesso da tira, que é propositalmente mais larga que a tela. */
+.faixa-viewport {
+  overflow: hidden;
+}
+
+/* Pausa ao passar o mouse ou ao focar por teclado: quem quiser ler a frase
+   inteira consegue parar a tira. */
+.faixa-viewport:hover .faixa-track,
+.faixa-viewport:focus-within .faixa-track {
+  animation-play-state: paused;
+}
+
+.faixa-track {
+  display: flex;
+  /* max-content, não 100%: a tira precisa ter a largura real dos dois grupos
+     para o translateX(-50%) corresponder a exatamente um grupo. */
+  width: max-content;
+  animation: faixa-scroll 42s linear infinite;
+}
+
+.faixa-group {
+  min-width: 100vw;
+  flex-shrink: 0;
+  justify-content: space-around;
+  display: flex;
+  align-items: center;
+}
+
+.faixa-group li {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-inline-end: 16px;
+  font-family: var(--font-body);
+  font-size: var(--text-88);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--color-cream);
+  /* Sem quebra de linha: numa tira horizontal, quebrar arruinaria o cálculo
+     de largura do laço. A versão sem movimento mais abaixo desfaz isto. */
+  white-space: nowrap;
+}
+
+@keyframes faixa-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Sem movimento: a tira para, a cópia some (senão as frases apareceriam
+   duplicadas na tela) e o que sobra é uma linha centralizada que pode quebrar
+   normalmente. Nenhuma frase deixa de ser exibida. */
+@media (prefers-reduced-motion: reduce) {
+  .faixa-track {
+    animation: none;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .faixa-group[aria-hidden='true'] {
+    display: none;
+  }
+
+  .faixa-group {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-2xs) 0;
+    padding-inline: var(--container-pad);
+  }
+
+  .faixa-group li {
+    white-space: normal;
+  }
+}
+
+/* Separadores decorativos na cor de destaque da própria marca. */
+.faixa-group li::after { content: ""; width: 4px; height: 4px; flex: none; border-radius: 50%; background: var(--color-gold); }

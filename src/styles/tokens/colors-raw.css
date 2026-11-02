@@ -1,0 +1,53 @@
+/* ============================================================================
+   PALETA BRUTA (cores da marca)
+   ----------------------------------------------------------------------------
+   Valores literais apenas. Nenhum componente deve usar estas variáveis
+   diretamente — elas existem só para alimentar os tokens SEMÂNTICOS em
+   colors-semantic.css (--color-*), que é o que o resto do CSS consome.
+
+   Cada família de cor tem variações próximas mas não idênticas (ex.: os
+   quatro "pretos" abaixo), preservadas exatamente como já existiam no projeto.
+   Não foram unificadas nem redondadas: fazer isso mudaria a aparência atual.
+   ============================================================================ */
+
+:root {
+  /* ---- Carvão (fundo escuro, base da marca) ---- */
+  --palette-charcoal-950: #15130f;
+  --palette-charcoal-950-rgb: 21, 19, 15;
+  --palette-charcoal-900: #1e1b15;
+  --palette-charcoal-800: #322c21;
+
+  /* Pretos translúcidos usados em overlays (hero) e gradiente da legenda da
+     galeria — tons de preto ligeiramente diferentes do carvão principal,
+     escolhas de design já existentes, não uma variação acidental. */
+  --palette-overlay-hero-rgb: 15, 13, 10;
+  --palette-overlay-caption-rgb: 10, 9, 7;
+
+  /* Preto puro, usado só em sombras (box-shadow) */
+  --palette-black-rgb: 0, 0, 0;
+
+  /* ---- Âmbar/dourado (cor de destaque da marca) ---- */
+  --palette-amber-300: #e6cb84;
+  --palette-amber-500: #c9a24d;
+  --palette-amber-600: #a8842f;
+  --palette-amber-700: #8a6f34;
+  --palette-amber-800: #6f5827;
+  --palette-amber-900: #55411c;
+
+  /* ---- Areia/creme (fundo claro "paper" e textos sobre fundo escuro) ---- */
+  --palette-sand-100: #f4ecd8;
+  --palette-sand-300: #c9bfa4;
+  --palette-sand-600: #5c5347;
+  /* Texto quase preto usado sobre o fundo "paper" (não é o mesmo tom do
+     carvão principal, ver nota acima sobre variações intencionais) */
+  --palette-sand-text-950: #17140f;
+  --palette-sand-text-950-rgb: 23, 20, 15;
+
+  /* ---- Verde (WhatsApp) ---- */
+  --palette-green-500: #1fbd59;
+  --palette-green-600: #189c48;
+
+  /* ---- Neutros absolutos ---- */
+  --palette-white: #fff;
+  --palette-white-rgb: 255, 255, 255;
+}

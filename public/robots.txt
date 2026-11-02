@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# Pagina de politica: util para quem visita, sem valor de busca.
+Disallow: /privacidade.html
+
+Sitemap: https://casadobarbudo.com.br/sitemap.xml

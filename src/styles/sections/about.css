@@ -1,0 +1,140 @@
+/* ============================================================================
+   SEÇÃO: Sobre
+   ----------------------------------------------------------------------------
+   Mesmos valores computados de antes (tamanho de fonte agora vem da escala
+   de tipografia).
+   ============================================================================ */
+
+.about .container {
+  display: grid;
+  /* Uma coluna fluida explícita, mesmo no celular. Sem isto, o grid usa
+     dimensionamento implícito de coluna, que cresce pelo max-content do
+     conteúdo em vez de respeitar a largura do container: com texto ampliado
+     a 200%, o título "SUBSTITUIR: título sobre o corte" (a única string longa
+     o bastante para expor o problema) esticava a coluna a 354px num container
+     de 280px, e o excesso vazava como rolagem horizontal da página inteira.
+     minmax(0, 1fr), não só 1fr: o mínimo padrão de uma track é auto (o
+     max-content do conteúdo), e é exatamente esse auto que causava o
+     estouro; 0 permite a coluna encolher e o texto quebrar normalmente. */
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-lg);
+  align-items: center;
+}
+
+.about-text p {
+  max-width: 65ch;
+}
+
+.about-text p + p {
+  margin-top: var(--space-sm);
+}
+
+/* O título (Diego Lima, ou o título de Corte/Barba) tinha um ornamento SVG
+   entre ele e o primeiro parágrafo, que dava o respiro entre os dois (correção
+   dos traços decorativos, ornamento removido do HTML). Sem ele h1/h2 e p
+   ficariam colados, porque a base do site zera toda margem de heading. Mesmo
+   valor de respiro que já existia entre parágrafos consecutivos aqui do lado,
+   para manter o mesmo ritmo vertical do bloco. */
+.about-text h1 + p,
+.about-text h2 + p {
+  margin-top: var(--space-sm);
+}
+
+/* Corte e Barba têm só uma frase curta sob o título: vira subtítulo, um
+   degrau abaixo do h2 na escala. O texto longo do Diego fica no tamanho base. */
+#corte .about-text p,
+#barba .about-text p {
+  font-size: var(--text-display-sm);
+  line-height: var(--leading-display-sm);
+}
+
+.about-figure {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--color-ink-line);
+  box-shadow: var(--shadow-soft);
+}
+
+/* Sem aspect-ratio fixo: o retrato é vertical (941x1671) e um recorte
+   forçado cortaria a cabeça ou os braços. */
+.about-figure img {
+  width: 100%;
+  height: auto;
+}
+
+/* Sangramento, para o retrato de estúdio do Diego.
+
+   A foto tem fundo de estúdio preto; o fundo da página é carvão, mais claro.
+   Dentro da moldura, esse preto virava um retângulo visivelmente mais escuro,
+   com borda e sombra reforçando o contorno. Duas coisas resolvem isso juntas.
+
+   1) mix-blend-mode: screen. Com esse modo, preto puro devolve exatamente o
+      que está atrás: o fundo da foto passa a ser o fundo da página, pixel a
+      pixel, e só o Diego (mais claro que o fundo dele) continua aparecendo.
+      O clareamento que o screen aplica ao resto é desprezível aqui, porque o
+      fundo da página já é quase preto.
+
+   2) filter, antes do screen. O fundo do estúdio não é preto absoluto: é um
+      cinza muito escuro, com leve gradiente. Como o screen só clareia, esse
+      cinza sobrava como um retângulo levemente mais claro que a página. O
+      filtro empurra os quase-pretos para preto de verdade, e aí o screen
+      finalmente os apaga. É este par que faz o retângulo sumir; sozinho,
+      nenhum dos dois resolve.
+
+   3) Máscara vertical, que desvanece topo e base. Em cima e embaixo o recorte
+      da foto é reto, e nem filtro nem screen tratam isso: em cima sobra a
+      emenda do enquadramento, embaixo o corte é no tronco. As porcentagens
+      são assimétricas por isso: a entrada pode ser curta, a saída precisa
+      ser longa.
+
+   Máscara e mistura ficam as duas no <img>, não no <figure>: um ancestral que
+   cria contexto de empilhamento (o que a máscara faz) isolaria a mistura, e o
+   screen não teria mais o fundo da página para misturar. */
+.about-figure--bleed {
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  overflow: visible;
+}
+
+.about-figure--bleed img {
+  filter: brightness(0.92) contrast(1.18);
+  mix-blend-mode: screen;
+
+  /* Uma camada só, de propósito. Duas máscaras cruzadas dariam desvanecimento
+     nos quatro lados, mas dependem de mask-composite, que é irregular entre
+     motores: aqui o navegador compôs a camada de baixo com vazio e apagou a
+     foto inteira. Com filtro e screen resolvendo as laterais, sobra só o eixo
+     vertical, e isso uma camada resolve sem compor nada. */
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 8%, #000 78%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 8%, #000 78%, transparent 100%);
+}
+
+/* Lista de credenciais abaixo do texto */
+.about-credentials {
+  margin-top: var(--space-md);
+  padding-top: var(--space-sm);
+  border-top: 1px solid var(--color-ink-line);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xs);
+}
+
+.about-credentials li {
+  font-size: var(--text-92);
+  color: var(--color-cream);
+}
+
+@media (min-width: 53.75em) {
+  .about .container {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+
+  .about.reverse .container {
+    direction: rtl;
+  }
+
+  .about.reverse .container > * {
+    direction: ltr;
+  }
+}

@@ -1,0 +1,26 @@
+/* ============================================================================
+   ESCALA DE MOVIMENTO (duração e curva de animação)
+   ----------------------------------------------------------------------------
+   --transition-fast, --transition-base e --ease-out já existiam.
+   --duration-slow e os --stagger-* são novos: eram valores em segundos
+   escritos direto em reveal.css, sem token. Mesmos valores de antes, só
+   nomeados.
+
+   --duration-slower (2.4s) pertence à animação de pulso do indicador de
+   rolagem do hero (hero.css) e não foi migrado nesta etapa (item 6 do
+   escopo: não alterar o hero) — hero.css continua com o valor literal.
+   ============================================================================ */
+
+:root {
+  --transition-fast: 160ms ease;
+  --transition-base: 260ms ease;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --duration-slow: 0.8s;
+  --duration-slower: 2.4s; /* usado só em hero.css (não migrado nesta etapa) */
+
+  /* Atraso escalonado para animações de entrada de itens irmãos */
+  --stagger-1: 0.08s;
+  --stagger-2: 0.16s;
+  --stagger-3: 0.24s;
+}

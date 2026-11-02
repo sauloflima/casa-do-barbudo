@@ -1,0 +1,270 @@
+/* ============================================================================
+   SEÇÃO: Catálogo de serviços (Etapa 9)
+   ----------------------------------------------------------------------------
+   Substitui, na página de Serviços, a lista de linhas pontilhadas com preço à
+   direita que o site usava antes. Aquele formato lia como planilha; aqui cada
+   serviço é um cartão com respiro, ornamento da casa e botão próprio de
+   agendar, e a página abre com uma faixa fotográfica da fachada.
+
+   As regras antigas continuam em services.css: elas ainda são a base do
+   .service-item usado em outras páginas.
+   ============================================================================ */
+
+/* ----- Capa fotográfica ---------------------------------------------------- */
+
+.servicos-capa {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: clamp(16rem, 12rem + 16vw, 24rem);
+  padding-block: var(--space-2xl) var(--space-lg);
+  background-color: var(--color-ink);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.servicos-capa-media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: block;
+}
+
+.servicos-capa-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Enquadramento diferente do hero da Home de propósito: aqui o corte puxa
+     para a entrada e o letreiro, para a página não repetir a mesma imagem. */
+  object-position: 38% 62%;
+}
+
+/* Mesmo tratamento cinematográfico do hero, em versão mais curta. Aqui a faixa
+   fica abaixo da trilha de navegação, não sob o cabeçalho, então não precisa da
+   faixa extra de contraste que o hero da Home tem no topo. Escurece para baixo
+   porque é ali que o título e o subtítulo se apoiam. */
+.servicos-capa::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(var(--color-ink-rgb), 0.5) 0%,
+    rgba(var(--color-ink-rgb), 0.62) 55%,
+    rgba(var(--color-ink-rgb), 0.85) 100%
+  );
+}
+
+.servicos-capa-conteudo {
+  position: relative;
+  z-index: 2;
+}
+
+.servicos-capa-conteudo .section-subtitle {
+  margin-top: var(--space-xs);
+  color: var(--color-cream);
+  max-width: 46ch;
+}
+
+/* ----- Filtros ------------------------------------------------------------- */
+
+.catalogo-filtros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2xs);
+  margin-bottom: var(--space-lg);
+}
+
+.catalogo-filtro {
+  /* 48px de altura: mesma régua de alvo clicável do cabeçalho (Etapa 6). */
+  min-height: 48px;
+  padding-inline: var(--space-sm);
+  border: 1px solid var(--color-ink-line);
+  border-radius: var(--radius-full);
+  font-family: var(--font-body);
+  font-size: var(--text-92);
+  font-weight: 600;
+  color: var(--color-cream-dim);
+  transition: color var(--transition-fast), border-color var(--transition-fast),
+    background-color var(--transition-fast);
+}
+
+.catalogo-filtro:hover {
+  color: var(--color-cream);
+  border-color: var(--color-gold-dim);
+}
+
+/* Ativo não se distingue só pela cor: muda também o fundo e o peso da borda,
+   e o aria-pressed diz o estado para leitor de tela (WCAG 1.4.1). */
+.catalogo-filtro.is-active {
+  background: var(--color-gold);
+  border-color: var(--color-gold);
+  color: var(--color-ink);
+}
+
+/* ----- Estados (carregando, vazio, erro) ----------------------------------- */
+
+.catalogo-estado {
+  /* Mesma correção de produtos.css: padding-inline menor que padding-block,
+     porque só o inline ameaça rolagem horizontal com texto ampliado. Este
+     estado não aparece hoje (Serviços sempre tem catálogo real), mas usa o
+     mesmo componente de produtos.css e tinha o mesmo defeito latente. */
+  padding-block: var(--space-lg);
+  padding-inline: var(--space-sm);
+  border: 1px dashed var(--color-ink-line);
+  border-radius: var(--radius-md);
+  text-align: center;
+  color: var(--color-cream);
+}
+
+.catalogo-estado-apoio {
+  margin-top: var(--space-2xs);
+  font-size: var(--text-92);
+  color: var(--color-cream-dim);
+}
+
+.catalogo-estado .btn {
+  margin-top: var(--space-sm);
+  min-height: 48px;
+}
+
+/* ----- Cartões de serviço -------------------------------------------------- */
+
+.catalogo-grid {
+  display: grid;
+  gap: var(--space-md);
+  grid-template-columns: repeat(auto-fit, minmax(min(17rem, 100%), 1fr));
+}
+
+.servico-card {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-md);
+  border: 1px solid var(--color-ink-line);
+  border-radius: var(--radius-md);
+  background: var(--color-ink-soft);
+}
+
+.servico-categoria {
+  font-family: var(--font-body);
+  font-size: var(--text-72);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+.servico-cabecalho {
+  margin-top: var(--space-2xs);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-2xs) var(--space-sm);
+}
+
+.servico-nome {
+  /* Inter, não Rye: só o h1 usa a fonte editorial (ver base.css). */
+  font-family: var(--font-body);
+  font-size: var(--text-display-sm);
+  line-height: var(--leading-display-sm);
+  color: var(--color-cream);
+  /* Filho de flex: deixa o nome quebrar linha em vez de empurrar o preço. */
+  min-width: 0;
+}
+
+.servico-preco {
+  font-family: var(--font-body);
+  font-size: var(--text-display-sm);
+  font-weight: 700;
+  color: var(--color-gold-light);
+  white-space: nowrap;
+}
+
+/* Sem valor confirmado o texto é mais discreto e pode quebrar linha, já que
+   é uma frase e não um número. */
+.servico-preco--consulta {
+  font-size: var(--text-95);
+  font-weight: 600;
+  color: var(--color-cream-dim);
+  white-space: normal;
+}
+
+/* O ornamento SVG (linha-losango-linha) que ficava aqui, entre o cabeçalho do
+   cartão e a descrição/botão, saiu (correção dos traços decorativos). O
+   cartão é flex column com o CTA em `margin-top: auto`, então nos cartões sem
+   descrição (Corte, Barba) o espaço livre é só absorvido pelo botão, sem
+   deixar vão. O cartão com descrição (Combo) é que precisava de um respiro
+   próprio no lugar do ornamento: ver `.servico-descricao` abaixo. */
+.servico-descricao {
+  margin-top: var(--space-2xs);
+  max-width: 46ch;
+}
+
+.servico-duracao {
+  margin-top: var(--space-2xs);
+  font-size: var(--text-92);
+  color: var(--color-cream-dim);
+}
+
+/* margin-top auto: alinha o botão na base mesmo quando os cartões vizinhos
+   têm textos de alturas diferentes. */
+.servico-cta {
+  margin-top: auto;
+  min-height: 48px;
+}
+
+.servico-indisponivel {
+  margin-top: auto;
+  padding-top: var(--space-sm);
+  font-size: var(--text-92);
+  font-weight: 600;
+  color: var(--color-cream-dim);
+}
+
+/* Indisponível não se anuncia só pela cor: o cartão inteiro perde saturação e
+   o texto acima diz o estado por escrito. */
+.servico-card[data-disponivel='false'] {
+  opacity: 0.72;
+}
+
+/* Tela estreita, e principalmente texto ampliado a 200% (WCAG 1.4.4): o padding
+   do cartão é em rem, então dobra junto com a fonte. Num celular de 360px isso
+   sobrava só 134px de conteúdo, e o rótulo do botão e o nome do serviço
+   vazavam da própria caixa. Em em, não px, justamente para o zoom de texto
+   disparar a regra (a 200%, 360px valem 11,25em). */
+@media (max-width: 30em) {
+  .servico-card {
+    padding: var(--space-sm);
+  }
+}
+
+.catalogo-nota {
+  margin-top: var(--space-lg);
+  max-width: 65ch;
+  font-size: var(--text-92);
+  color: var(--color-cream-dim);
+  border-left: 2px solid var(--color-gold-dim);
+  padding-left: var(--space-sm);
+}
+
+/* Catálogo agrupado: leitura do nome e do preço antes da ação. */
+.catalogo-filtros { gap: 8px; margin-bottom: 24px; }
+.catalogo-filtro { min-height: 48px; padding: 12px 24px; border-radius: var(--radius-full); }
+.servico-card { padding: 24px; background: var(--color-ink-soft); box-shadow: none; }
+.servico-cabecalho { align-items: start; gap: 16px; flex-wrap: wrap; }
+.servico-preco { font-variant-numeric: tabular-nums; }
+.catalogo-nota { max-width: 75ch; margin-block: 24px; color: var(--color-cream-dim); font-size: var(--text-90); }
+.assinaturas-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(min(280px,100%),1fr)); gap: 24px; }
+.assinatura-card { display: flex; flex-direction: column; gap: 24px; padding: 32px; border: 1px solid var(--color-ink-line); border-radius: 24px; background: var(--color-ink-soft); }
+.assinatura-card--destaque { border-color: var(--color-gold); }
+.assinatura-card h2 { font-size: var(--text-display-sm); }
+.assinatura-descricao { color: var(--color-cream-dim); }
+.assinatura-valor { margin-top: auto; }
+.assinatura-valor > span { color: var(--color-cream-dim); font-size: var(--text-85); }
+.assinatura-valor p { font-size: 2.5rem; font-weight: 600; color: var(--color-gold-light); font-variant-numeric: tabular-nums; }
+.assinatura-valor small { margin-left: 8px; font-size: 1rem; font-weight: 400; color: var(--color-cream-dim); }
+
+.servico-foto { width: 150px; height: 150px; max-width: 100%; align-self: center; object-fit: contain; border-radius: 50%; background: transparent; border: 1px solid var(--color-gold-dim); }

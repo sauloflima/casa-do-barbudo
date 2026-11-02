@@ -1,0 +1,57 @@
+/* ============================================================================
+   RESET
+   ----------------------------------------------------------------------------
+   Normalização de comportamento padrão do navegador. Nenhuma decisão de
+   marca aqui (cor, fonte, espaçamento) — isso vive nas camadas seguintes.
+   ============================================================================ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* scroll-behavior: smooth não é usado aqui de propósito — o scroll suave
+   é feito pelo Lenis (src/scripts/smooth-scroll.js), e misturar os dois
+   causa conflito/soluço na animação. */
+
+body,
+h1, h2, h3, h4, p, figure {
+  margin: 0;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Respeita preferência do usuário por menos movimento */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* hidden deve vencer o display dos cartões e dos estados de carregamento. */
+[hidden] { display: none !important; }

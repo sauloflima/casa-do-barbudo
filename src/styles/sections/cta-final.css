@@ -1,0 +1,25 @@
+/* ============================================================================
+   SEÇÃO: Chamada final
+   ----------------------------------------------------------------------------
+   Mesmos valores computados de antes (tamanho de fonte agora vem da escala
+   de tipografia).
+   ============================================================================ */
+
+.cta-final {
+  text-align: center;
+  background: linear-gradient(180deg, var(--color-ink), var(--color-ink-soft));
+}
+
+.cta-final .container {
+  max-width: 620px;
+}
+
+.cta-final p {
+  margin-top: var(--space-xs);
+  margin-bottom: var(--space-lg);
+}
+
+.cta-final .btn {
+  font-size: var(--text-105);
+  padding: 1rem 2.25rem;
+}

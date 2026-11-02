@@ -1,0 +1,52 @@
+/* ============================================================================
+   SEÇÃO: Ambiente e experiência (Etapa 8A)
+   ----------------------------------------------------------------------------
+   Sexto bloco da ordem editorial da Home. De propósito NÃO usa o padrão de
+   duas colunas do .about: antes dela vêm três blocos seguidos de texto ao lado
+   de foto (Diego, Corte, Barba) e um quarto igual deixaria o miolo da página
+   monótono. Aqui a fotografia é larga e o texto vem centralizado embaixo,
+   dando uma pausa de respiro antes da grade da Equipe.
+   ============================================================================ */
+
+.ambiente {
+  background: var(--color-ink-soft);
+  border-block: 1px solid var(--color-ink-line);
+}
+
+.ambiente-figure {
+  margin-top: var(--space-lg);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--color-ink-line);
+  box-shadow: var(--shadow-soft);
+}
+
+/* aspect-ratio fixo aqui (o .about-figure não usa) porque esta foto é
+   panorâmica e do espaço, não um retrato: recortar em 16/9 é o enquadramento
+   pretendido, e a proporção declarada também evita salto de layout enquanto a
+   imagem carrega. */
+.ambiente-figure img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.ambiente-text {
+  margin-top: var(--space-lg);
+  margin-inline: auto;
+  max-width: 65ch;
+  text-align: center;
+}
+
+.ambiente-text p + p {
+  margin-top: var(--space-sm);
+}
+
+.ambiente-figure { box-shadow: none; }
+.home-catalogos { border-bottom: 1px solid var(--color-ink-line); }
+.home-catalogos-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(min(300px,100%),1fr)); gap: 24px; }
+.home-catalogo { display: flex; flex-direction: column; gap: 16px; padding: 32px; border: 1px solid var(--color-ink-line); border-radius: 24px; background: var(--color-ink-soft); color: var(--color-cream); }
+.home-catalogo:hover { border-color: var(--color-gold); color: var(--color-cream); }
+.home-catalogo p:not(.eyebrow) { color: var(--color-cream-dim); }
+.home-catalogo span { color: var(--color-gold-light); margin-top: auto; font-weight: 600; }

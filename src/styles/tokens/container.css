@@ -1,0 +1,35 @@
+/* ============================================================================
+   ESCALA DE CONTAINER
+   ----------------------------------------------------------------------------
+   O site usa um único container (não há variantes de largura), então a
+   "escala" aqui é um só degrau — reflete o que existe, não inventa
+   variantes que o design não tem.
+
+   --container-pad (Etapa 5) virou fluido: antes pulava de 1.25rem para 2rem
+   de uma vez só em 960px. Agora sobe suavemente do início (320px) até esse
+   mesmo ponto (960px), preservando os dois valores originais nas pontas —
+   só o meio do caminho deixou de ser um degrau.
+
+   --header-height é do componente do cabeçalho (não é "container, gutter
+   ou espaço vertical", os alvos desta etapa), então continua um degrau,
+   não fluido. Só o ponto de quebra virou em, junto com todo o resto do
+   site (ver nota abaixo).
+   ============================================================================ */
+
+:root {
+  --container-max: 1180px;
+  --container-pad: clamp(1.25rem, 0.875rem + 1.875vw, 2rem);
+  --header-height: 72px;
+}
+
+/* 60em (não 960px): breakpoints em em acompanham o tamanho de fonte que o
+   usuário configurou no navegador, não só a largura física da tela — quem
+   aumenta a fonte por acessibilidade ganha mais espaço em "modo mobile"
+   antes do layout mudar. Convertido 1:1 a partir do valor em px anterior
+   (960 ÷ 16), então o ponto em que a mudança acontece é idêntico a antes
+   com as configurações padrão do navegador. */
+@media (min-width: 60em) {
+  :root {
+    --header-height: 84px;
+  }
+}

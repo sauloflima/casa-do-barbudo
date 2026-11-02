@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Serviços e preços | Casa do Barbudo Barbearia</title>
+  <meta name="description" content="Corte, barba e acabamento na Casa do Barbudo, em Gravatá, PE. Veja os serviços e agende seu horário pelo WhatsApp." />
+  <meta name="theme-color" content="#15130f" />
+
+  <!-- Marca que o JS está ativo. As animações de entrada só escondem o conteúdo
+       quando esta classe existe. Sem JS, tudo aparece normalmente. -->
+  <script>document.documentElement.classList.add('js');</script>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+
+  <!-- Open Graph / compartilhamento em redes sociais -->
+  
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:site_name" content="Casa do Barbudo Barbearia" />
+  <meta property="og:title" content="Serviços e preços | Casa do Barbudo Barbearia" />
+  <meta property="og:description" content="Corte, barba e acabamento na Casa do Barbudo, em Gravatá, PE. Veja os serviços e agende seu horário pelo WhatsApp." />
+  <meta property="og:image" content="./images/hero/fachada-desktop.jpeg" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Google Fonts: Rye (só o h1, destaque editorial) + Inter (todo o restante) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Rye&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+</head>
+<body>
+  <!-- Sprite de ícones (linha fina, estilo vintage) reutilizados no site -->
+  <svg style="display: none" aria-hidden="true">
+    <symbol id="icon-instagram" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <rect x="3" y="3" width="18" height="18" rx="5" />
+      <circle cx="12" cy="12" r="4.2" />
+      <circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none" />
+    </symbol>
+    <symbol id="icon-whatsapp" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <path d="M4 20l1.3-4A8 8 0 1 1 8.6 19L4 20Z" />
+      <circle cx="9" cy="11" r="0.8" fill="currentColor" stroke="none" />
+      <circle cx="12" cy="11" r="0.8" fill="currentColor" stroke="none" />
+      <circle cx="15" cy="11" r="0.8" fill="currentColor" stroke="none" />
+    </symbol>
+    <symbol id="icon-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <path d="M12 3.5l2.6 5.4 5.9.8-4.3 4.2 1 5.9-5.2-2.8-5.2 2.8 1-5.9-4.3-4.2 5.9-.8L12 3.5Z" />
+    </symbol>
+    <symbol id="icon-star-filled" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+      <path d="M12 3.5l2.6 5.4 5.9.8-4.3 4.2 1 5.9-5.2-2.8-5.2 2.8 1-5.9-4.3-4.2 5.9-.8L12 3.5Z" />
+    </symbol>
+    <symbol id="icon-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <path d="M12 21s7-6.3 7-11.5A7 7 0 0 0 5 9.5C5 14.7 12 21 12 21Z" />
+      <circle cx="12" cy="9.5" r="2.4" />
+    </symbol>
+    <symbol id="icon-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <circle cx="12" cy="12" r="8.5" />
+      <path d="M12 7.5V12l3 2" />
+    </symbol>
+  </svg>
+
+  <!-- Pular para o conteúdo (WCAG 2.4.1, Etapa 14). Fica invisível até
+       receber foco por teclado; é o primeiro elemento focável da página, para
+       quem navega sem mouse não ter que passar pelos 8 links do menu em toda
+       página. -->
+  <a class="skip-link" href="#conteudo-principal">Pular para o conteúdo</a>
+
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="./index.html" aria-label="Casa do Barbudo Barbearia, ir para a página inicial">
+        <picture>
+          <source srcset="./images/logo/logo.avif" type="image/avif" />
+          <source srcset="./images/logo/logo.webp" type="image/webp" />
+          <img class="brand-logo" src="./images/logo/logo.jpg" alt="" width="52" height="52" />
+        </picture>
+        <span class="brand-name">Casa do Barbudo<span>Barbearia</span></span>
+      </a>
+
+      <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" id="site-nav" aria-label="Navegação principal">
+        <ul class="nav-links">
+          <li><a href="./index.html">Início</a></li>
+          <li><details class="nav-group"><summary>A barbearia<span aria-hidden="true">⌄</span></summary><ul class="nav-submenu"><li><a href="./sobre.html">Nossa história</a></li><li><a href="./equipe.html">Equipe</a></li><li><a href="./galeria.html">Galeria</a></li><li><a href="./localizacao.html">Localização</a></li></ul></details></li>
+          <li><details class="nav-group"><summary class="is-active">Serviços<span aria-hidden="true">⌄</span></summary><ul class="nav-submenu"><li><a href="./servicos.html" class="is-active" aria-current="page">Todos os serviços</a></li><li><a href="./servicos.html?categoria=cortes">Cortes</a></li><li><a href="./servicos.html?categoria=barba">Barba</a></li><li><a href="./servicos.html?categoria=estetica-cuidados">Cuidados</a></li><li><a href="./servicos.html?categoria=coloracao">Coloração</a></li><li><a href="./assinaturas.html">Assinaturas</a></li></ul></details></li>
+          <li><a href="./produtos.html">Produtos</a></li>
+          <li><a href="./index.html#trabalhe-conosco">Trabalhe conosco</a></li>
+          <li><a href="./cursos.html" class="nav-course">Cursos</a></li>
+        </ul>
+        <div class="nav-cta">
+          <a class="btn btn-primary btn-block" data-whatsapp-link href="#" target="_blank" rel="noopener">
+            Agendar
+          </a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-main" id="conteudo-principal" tabindex="-1">
+    <nav class="breadcrumb" aria-label="Trilha de navegação">
+      <div class="container">
+        <a href="./index.html">Início</a>
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        <span class="breadcrumb-atual" aria-current="page">Serviços e preços</span>
+      </div>
+    </nav>
+    <!--
+      CAPA FOTOGRÁFICA (Etapa 9, item 4)
+      A foto real da fachada, em recorte panorâmico e enquadramento diferente do
+      hero da Home, dá contexto de barbearia antes da lista de valores. Sem ela
+      a página abriria direto num bloco de nomes e preços, com cara de tabela
+      administrativa. Não é lazy porque é a imagem de topo desta página.
+    -->
+    <section class="servicos-capa">
+      <picture class="servicos-capa-media">
+        <source srcset="./images/hero/fachada-desktop.avif" type="image/avif" />
+        <source srcset="./images/hero/fachada-desktop.webp" type="image/webp" />
+        <img
+          src="./images/hero/fachada-desktop.jpeg"
+          width="1408"
+          height="900"
+          alt="Fachada da Casa do Barbudo em Gravatá"
+          fetchpriority="high"
+          decoding="async"
+        />
+      </picture>
+
+      <div class="container servicos-capa-conteudo">
+        <p class="eyebrow">O que fazemos</p>
+        <h1>Serviços e preços</h1>
+        <p class="section-subtitle">
+          Corte, barba e acabamento, sempre com calma e capricho.
+        </p>
+      </div>
+    </section>
+
+    <!-- Catálogo sincronizado com src/catalog.js pelo build. -->
+<section id="catalogo" class="catalogo"><div class="container">
+<!-- inicio:filtros-servicos -->
+<div class="catalogo-filtros" role="group" aria-label="Filtrar serviços por categoria">
+<button type="button" class="catalogo-filtro is-active" data-filtro="todos" aria-pressed="true">Todos</button>
+<button type="button" class="catalogo-filtro" data-filtro="cortes" aria-pressed="false">Cortes</button>
+<button type="button" class="catalogo-filtro" data-filtro="barba" aria-pressed="false">Barba</button>
+<button type="button" class="catalogo-filtro" data-filtro="estetica-cuidados" aria-pressed="false">Estética &amp; Cuidados</button>
+<button type="button" class="catalogo-filtro" data-filtro="coloracao" aria-pressed="false">Coloração</button>
+</div>
+<!-- fim:filtros-servicos -->
+<p class="catalogo-status" role="status" aria-live="polite"></p>
+        <div class="catalogo-estado" data-estado="carregando" hidden>
+          <p>Carregando serviços…</p>
+        </div>
+
+        <div class="catalogo-estado" data-estado="vazio" hidden>
+          <p>Nenhum serviço nesta categoria por enquanto.</p>
+          <p class="catalogo-estado-apoio">
+            Fale com a gente no WhatsApp que a gente confirma o que está disponível hoje.
+          </p>
+        </div>
+
+        <div class="catalogo-estado" data-estado="erro" hidden>
+          <p>Não foi possível carregar os serviços agora.</p>
+          <p class="catalogo-estado-apoio">
+            Tente recarregar a página. Se continuar assim, chame a gente no WhatsApp.
+          </p>
+          <a class="btn btn-outline" data-whatsapp-link href="#" target="_blank" rel="noopener">
+            Falar no WhatsApp
+          </a>
+        </div>
+
+        <!-- inicio:servicos -->
+<div class="catalogo-grid" id="catalogo-grid">
+<article class="servico-card" data-categoria="cortes" data-reveal>
+<img class="servico-foto" src="./images/servicos/corte-diversos.jpg" alt="Imagem de referência: Corte (diversos)" width="240" height="240" loading="lazy" decoding="async">
+<p class="servico-categoria">Cortes</p><div class="servico-cabecalho"><h2 class="servico-nome">Corte (diversos)</h2><p class="servico-preco">R$ 35,00</p></div>
+
+<a class="btn btn-primary servico-cta" data-whatsapp-link data-whatsapp-message="Olá! Vim pelo site e gostaria de agendar um horário na Casa do Barbudo. Serviço: Corte (diversos)." data-analytics-event="service_interest" href="https://wa.me/5581991388128?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20um%20hor%C3%A1rio%20na%20Casa%20do%20Barbudo.%20Servi%C3%A7o%3A%20Corte%20(diversos)." target="_blank" rel="noopener noreferrer">Agendar Corte (diversos) no WhatsApp</a>
+</article>
+<article class="servico-card" data-categoria="cortes" data-reveal>
+<img class="servico-foto" src="./images/servicos/corte-infantil.jpg" alt="Imagem de referência: Corte infantil" width="240" height="240" loading="lazy" decoding="async">
+<p class="servico-categoria">Cortes</p><div class="servico-cabecalho"><h2 class="servico-nome">Corte infantil</h2><p class="servico-preco">R$ 40,00</p></div>
+
+<a class="btn btn-primary servico-cta" data-whatsapp-link data-whatsapp-message="Olá! Vim pelo site e gostaria de agendar um horário na Casa do Barbudo. Serviço: Corte infantil." data-analytics-event="service_interest" href="https://wa.me/5581991388128?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20um%20hor%C3%A1rio%20na%20Casa%20do%20Barbudo.%20Servi%C3%A7o%3A%20Corte%20infantil." target="_blank" rel="noopener noreferrer">Agendar Corte infantil no WhatsApp</a>
+</article>
+<article class="servico-card" data-categoria="cortes" data-reveal>
+<img class="servico-foto" src="./images/servicos/acabamento-perfil.jpg" alt="Imagem de referência: Acabamento (perfil)" width="240" height="240" loading="lazy" decoding="async">
+<p class="servico-categoria">Cortes</p><div class="servico-cabecalho"><h2 class="servico-nome">Acabamento (perfil)</h2><p class="servico-preco">R$ 10,00</p></div>
+
+<a class="btn btn-primary servico-cta" data-whatsapp-link data-whatsapp-message="Olá! Vim pelo site e gostaria de agendar um horário na Casa do Barbudo. Serviço: Acabamento (perfil)." data-analytics-event="service_interest" href="https://wa.me/5581991388128?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20um%20hor%C3%A1rio%20na%20Casa%20do%20Barbudo.%20Servi%C3%A7o%3A%20Acabamento%20(perfil)." target="_blank" rel="noopener noreferrer">Agendar Acabamento (perfil) no WhatsApp</a>
+</article>
+<article class="servico-card" data-categoria="barba" data-reveal>
+<img class="servico-foto" src="./images/servicos/barba.jpg" alt="Imagem de referência: Barba" width="240" height="240" loading="lazy" decoding="async">
+<p class="servico-categoria">Barba</p><div class="servico-cabecalho"><h2 class="servico-nome">Barba</h2><p class="servico-preco">R$ 35,00</p></div>
+
+<a class="btn btn-primary servico-cta" data-whatsapp-link data-whatsapp-message="Olá! Vim pelo site e gostaria de agendar um horário na Casa do Barbudo. Serviço: Barba." data-analytics-event="service_interest" href="https://wa.me/5581991388128?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20um%20hor%C3%A1rio%20na%20Casa%20do%20Barbudo.%20Servi%C3%A7o%3A%20Barba." target="_blank" rel="noopener noreferrer">Agendar Barba no WhatsApp</a>
+</article>
+<article class="servico-card" data-categoria="barba" data-reveal>
+<img class="servico-foto" src="./images/servicos/combo-corte-barba.jpg" alt="Imagem de referência: Combo Corte + Barba" width="240" height="240" loading="lazy" decoding="async">
+<p class="servico-categoria">Barba</p><div class="servico-cabecalho"><h2 class="servico-nome">Combo Corte + Barba</h2><p class="servico-preco">R$ 60,00</p></div>
+<p class="servico-descricao">Corte + barba</p>
+<a class="btn btn-primary servico-cta" data-whatsapp-link data-whatsapp-message="Olá! Vim pelo site e gostaria de agendar um horário na Casa do Barbudo. Serviço: Combo Corte + Barba." data-analytics-event="service_interest" href="https://wa.me/5581991388128?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20um%20hor%C3%A1rio%20na%20Casa%20do%20Barbudo.%20Servi%C3%A7o%3A%20Combo%20Corte%20%2B%20Barba." target="_blank" rel="noopener noreferrer">Agendar Combo Corte + Barba no WhatsApp</a>
+</article>
+<article class="servico-card" data-categoria="barba" data-reveal>
+<img class="servico-foto" src="./images/galeria/barba.jpg" alt="Imagem de referência: Barboterapia" width="240" height="240" loading="lazy" decoding="async">
+<p class="servico-categoria">Barba</p><div class="servico-cabecalho"><h2 class="servico-nome">Barboterapia</h2><p class="servico-preco">R$ 40,00</p></div>
+
+<a class="btn btn-primary servico-cta" data-whatsapp-link data-whatsapp-message="Olá! Vim pelo site e gostaria de agendar um horário na Casa do Barbudo. Serviço: Barboterapia." data-analytics-event="service_interest" href="https://wa.me/5581991388128?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20um%20hor%C3%A1rio%20na%20Casa%20do%20Barbudo.%20Servi%C3%A7o%3A%20Barboterapia." target="_blank" rel="noopener noreferrer">Agendar Barboterapia no WhatsApp</a>
+</article>
+<article class="servico-card" data-categoria="estetica-cuidados" data-reveal>
+<img class="servico-foto" src="./images/servicos/combo-skin.jpg" alt="Imagem de referência: Combo Skin" width="240" height="240" loading="lazy" decoding="async">
+<p class="servico-categoria">Estética &amp; Cuidados</p><div class="servico-cabecalho"><h2 class="servico-nome">Combo Skin</h2><p class="servico-preco">R$ 40,00</p></div>
+
+<a class="btn btn-primary servico-cta" data-whatsapp-link data-whatsapp-message="Olá! Vim pelo site e gostaria de agendar um horário na Casa do Barbudo. Serviço: Combo Skin." data-analytics-event="service_interest" href="https://wa.me/5581991388128?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20um%20hor%C3%A1rio%20na%20Casa%20do%20Barbudo.%20Servi%C3%A7o%3A%20Combo%20Skin." target="_blank" rel="noopener noreferrer">Agendar Combo Skin no WhatsApp</a>
+</article>
+<article class="servico-card" data-categoria="estetica-cuidados" data-reveal>
+<img class="servico-foto" src="./images/servicos/botox-capilar.jpg" alt="Imagem de referência: Botox capilar" width="240" height="240" loading="lazy" decoding="async">
+<p class="servico-categoria">Estética &amp; Cuidados</p><div class="servico-cabecalho"><h2 class="servico-nome">Botox capilar</h2><p class="servico-preco">R$ 80,00</p></div>
+
+<a class="btn btn-primary servico-cta" data-whatsapp-link data-whatsapp-message="Olá! Vim pelo site e gostaria de agendar um horário na Casa do Barbudo. Serviço: Botox capilar." data-analytics-event="service_interest" href="https://wa.me/5581991388128?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20um%20hor%C3%A1rio%20na%20Casa%20do%20Barbudo.%20Servi%C3%A7o%3A%20Botox%20capilar." target="_blank" rel="noopener noreferrer">Agendar Botox capilar no WhatsApp</a>
+</article>
+<article class="servico-card" data-categoria="estetica-cuidados" data-reveal>
+<img class="servico-foto" src="./images/servicos/limpeza-de-pele.jpg" alt="Imagem de referência: Limpeza de pele" width="240" height="240" loading="lazy" decoding="async">
+<p class="servico-categoria">Estética &amp; Cuidados</p><div class="servico-cabecalho"><h2 class="servico-nome">Limpeza de pele</h2><p class="servico-preco">R$ 60,00</p></div>
+
+<a class="btn btn-primary servico-cta" data-whatsapp-link data-whatsapp-message="Olá! Vim pelo site e gostaria de agendar um horário na Casa do Barbudo. Serviço: Limpeza de pele." data-analytics-event="service_interest" href="https://wa.me/5581991388128?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20um%20hor%C3%A1rio%20na%20Casa%20do%20Barbudo.%20Servi%C3%A7o%3A%20Limpeza%20de%20pele." target="_blank" rel="noopener noreferrer">Agendar Limpeza de pele no WhatsApp</a>
+</article>
+<article class="servico-card" data-categoria="estetica-cuidados" data-reveal>
+<img class="servico-foto" src="./images/servicos/lavagem-hidratacao.jpg" alt="Imagem de referência: Lavagem + hidratação" width="240" height="240" loading="lazy" decoding="async">
+<p class="servico-categoria">Estética &amp; Cuidados</p><div class="servico-cabecalho"><h2 class="servico-nome">Lavagem + hidratação</h2><p class="servico-preco">R$ 25,00</p></div>
+
+<a class="btn btn-primary servico-cta" data-whatsapp-link data-whatsapp-message="Olá! Vim pelo site e gostaria de agendar um horário na Casa do Barbudo. Serviço: Lavagem + hidratação." data-analytics-event="service_interest" href="https://wa.me/5581991388128?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20um%20hor%C3%A1rio%20na%20Casa%20do%20Barbudo.%20Servi%C3%A7o%3A%20Lavagem%20%2B%20hidrata%C3%A7%C3%A3o." target="_blank" rel="noopener noreferrer">Agendar Lavagem + hidratação no WhatsApp</a>
+</article>
+<article class="servico-card" data-categoria="estetica-cuidados" data-reveal>
+<img class="servico-foto" src="./images/servicos/sobrancelha-navalha.jpg" alt="Imagem de referência: Sobrancelha (navalha)" width="240" height="240" loading="lazy" decoding="async">
+<p class="servico-categoria">Estética &amp; Cuidados</p><div class="servico-cabecalho"><h2 class="servico-nome">Sobrancelha (navalha)</h2><p class="servico-preco">R$ 10,00</p></div>
+
+<a class="btn btn-primary servico-cta" data-whatsapp-link data-whatsapp-message="Olá! Vim pelo site e gostaria de agendar um horário na Casa do Barbudo. Serviço: Sobrancelha (navalha)." data-analytics-event="service_interest" href="https://wa.me/5581991388128?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20um%20hor%C3%A1rio%20na%20Casa%20do%20Barbudo.%20Servi%C3%A7o%3A%20Sobrancelha%20(navalha)." target="_blank" rel="noopener noreferrer">Agendar Sobrancelha (navalha) no WhatsApp</a>
+</article>
+<article class="servico-card" data-categoria="coloracao" data-reveal>
+<img class="servico-foto" src="./images/servicos/pigmentacao.jpg" alt="Imagem de referência: Pigmentação" width="240" height="240" loading="lazy" decoding="async">
+<p class="servico-categoria">Coloração</p><div class="servico-cabecalho"><h2 class="servico-nome">Pigmentação</h2><p class="servico-preco">R$ 20,00</p></div>
+
+<a class="btn btn-primary servico-cta" data-whatsapp-link data-whatsapp-message="Olá! Vim pelo site e gostaria de agendar um horário na Casa do Barbudo. Serviço: Pigmentação." data-analytics-event="service_interest" href="https://wa.me/5581991388128?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20um%20hor%C3%A1rio%20na%20Casa%20do%20Barbudo.%20Servi%C3%A7o%3A%20Pigmenta%C3%A7%C3%A3o." target="_blank" rel="noopener noreferrer">Agendar Pigmentação no WhatsApp</a>
+</article>
+<article class="servico-card" data-categoria="coloracao" data-reveal>
+<img class="servico-foto" src="./images/servicos/luzes-reflexo.jpg" alt="Imagem de referência: Luzes / reflexo" width="240" height="240" loading="lazy" decoding="async">
+<p class="servico-categoria">Coloração</p><div class="servico-cabecalho"><h2 class="servico-nome">Luzes / reflexo</h2><p class="servico-preco">R$ 100,00</p></div>
+
+<a class="btn btn-primary servico-cta" data-whatsapp-link data-whatsapp-message="Olá! Vim pelo site e gostaria de agendar um horário na Casa do Barbudo. Serviço: Luzes / reflexo." data-analytics-event="service_interest" href="https://wa.me/5581991388128?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20um%20hor%C3%A1rio%20na%20Casa%20do%20Barbudo.%20Servi%C3%A7o%3A%20Luzes%20%2F%20reflexo." target="_blank" rel="noopener noreferrer">Agendar Luzes / reflexo no WhatsApp</a>
+</article>
+<article class="servico-card" data-categoria="coloracao" data-reveal>
+<img class="servico-foto" src="./images/servicos/platinado.jpg" alt="Imagem de referência: Platinado" width="240" height="240" loading="lazy" decoding="async">
+<p class="servico-categoria">Coloração</p><div class="servico-cabecalho"><h2 class="servico-nome">Platinado</h2><p class="servico-preco">R$ 120,00</p></div>
+
+<a class="btn btn-primary servico-cta" data-whatsapp-link data-whatsapp-message="Olá! Vim pelo site e gostaria de agendar um horário na Casa do Barbudo. Serviço: Platinado." data-analytics-event="service_interest" href="https://wa.me/5581991388128?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20um%20hor%C3%A1rio%20na%20Casa%20do%20Barbudo.%20Servi%C3%A7o%3A%20Platinado." target="_blank" rel="noopener noreferrer">Agendar Platinado no WhatsApp</a>
+</article>
+</div>
+<!-- fim:servicos -->
+
+        <p class="catalogo-nota">
+          Escolha o serviço e fale com a equipe pelo WhatsApp para combinar o dia e o horário.</p>
+      </div>
+    </section>
+    <section class="cta-final">
+      <div class="container" data-reveal>
+        <h2>Vamos marcar seu próximo horário?</h2>
+        <p>Fale com a equipe pelo WhatsApp para combinar o serviço, o dia e o horário.</p>
+        <a class="btn btn-primary" data-whatsapp-link href="#" target="_blank" rel="noopener">Agendar no WhatsApp</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="footer-brand">
+            <picture>
+              <source srcset="./images/logo/logo.avif" type="image/avif" />
+              <source srcset="./images/logo/logo.webp" type="image/webp" />
+              <img src="./images/logo/logo.jpg" alt="" width="34" height="34" />
+            </picture>
+            <span>Casa do Barbudo Barbearia</span>
+          </div>
+          <p>Barbearia clássica em Gravatá, Pernambuco. Corte, barba e cuidados com hora marcada.</p>
+          <div class="footer-social">
+            <a href="https://instagram.com/casadobarbudobarbearia" target="_blank" rel="noopener" aria-label="Instagram da Casa do Barbudo">
+              <svg width="18" height="18" aria-hidden="true"><use href="#icon-instagram" /></svg>
+            </a>
+            <a data-whatsapp-link href="#" target="_blank" rel="noopener" aria-label="WhatsApp da Casa do Barbudo">
+              <svg width="18" height="18" aria-hidden="true"><use href="#icon-whatsapp" /></svg>
+            </a>
+            <a href="https://share.google/W9tKis7d9dL4dlzF8" target="_blank" rel="noopener" aria-label="Avaliações no Google">
+              <svg width="18" height="18" aria-hidden="true"><use href="#icon-star" /></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h3>Navegação</h3>
+          <nav class="footer-links" aria-label="Navegação do rodapé">
+            <a href="./index.html">Início</a>
+            <a href="./sobre.html">Sobre</a>
+            <a href="./servicos.html" aria-current="page">Serviços</a>
+            <a href="./equipe.html">Equipe</a>
+            <a href="./galeria.html">Galeria</a>
+            <a href="./localizacao.html">Localização</a>
+            <a href="./assinaturas.html">Assinaturas</a>
+            <a href="./produtos.html">Produtos</a>
+            <a href="./index.html#trabalhe-conosco">Trabalhe conosco</a>
+          </nav>
+        </div>
+
+        <div class="footer-col">
+          <h3>Horário</h3>
+          <p>Segunda a sábado</p>
+          <p>9h às 13h · 14h às 20h</p>
+          <p>Domingo, fechado</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span class="footer-copyright">© 2011–<span id="current-year">2026</span> Casa do Barbudo Barbearia. Todos os direitos reservados.</span>
+        <a class="footer-privacy" href="./privacidade.html">Política de Privacidade</a>
+        <span class="footer-city">Gravatá, Pernambuco</span>
+        <span class="footer-credit">Desenvolvimento: © SF Technology Solutions</span>
+      </div>
+    </div>
+  </footer>
+
+  <a
+    class="whatsapp-float"
+    data-whatsapp-link
+    href="#"
+    target="_blank"
+    rel="noopener"
+    aria-label="Agendar pelo WhatsApp"
+  >
+    <svg aria-hidden="true"><use href="#icon-whatsapp" /></svg>
+  </a>
+
+  <script type="module" src="./src/scripts/main.js"></script>
+</body>
+</html>

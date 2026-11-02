@@ -1,0 +1,11 @@
+/* ============================================================================
+   OVERRIDES
+   ----------------------------------------------------------------------------
+   Última camada do sistema (vence qualquer conflito de especificidade com
+   as camadas anteriores, por posição no @layer). Deve ficar vazia na
+   maior parte do tempo: uma regra aqui é sempre uma bandeira vermelha de
+   que algo na camada certa (component/section) devia ter sido corrigido
+   ali, não remendado por cima.
+
+   Vazia nesta etapa. Nenhuma exceção foi necessária.
+   ============================================================================ */

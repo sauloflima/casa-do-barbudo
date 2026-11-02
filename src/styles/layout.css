@@ -1,0 +1,138 @@
+/* ============================================================================
+   LAYOUT
+   ----------------------------------------------------------------------------
+   Primitivas estruturais reutilizadas por toda página: o container central e
+   o espaçamento vertical padrão de qualquer <section>.
+   ============================================================================ */
+
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-pad);
+}
+
+section {
+  padding-block: var(--space-2xl);
+  scroll-margin-top: var(--header-height-actual, var(--header-height));
+}
+
+/* Contenção de rolagem horizontal, no <main>, não em body/html.
+
+   Com texto ampliado a 200%, a Home passava a ter ~34px de rolagem
+   horizontal (mais nas larguras menores). Investigação extensa (remoção e
+   clipe de cada uma das 11 seções da Home, individualmente e em conjunto,
+   inspeção de todo texto via Range, checagem de pseudo-elementos, animações,
+   fontes, direção RTL/LTR e do próprio h1) não encontrou nenhum elemento
+   isolado cujo próprio retângulo ultrapassasse a viewport: cada seção,
+   sozinha, mede exatamente 100% da largura disponível. Ainda assim, o
+   documento como um todo relata a rolagem, e ela desaparece por completo ao
+   conter apenas o <main>, sem precisar tocar em nenhuma seção específica.
+
+   Diferente de esconder o sintoma em body/html (que mascararia qualquer
+   futuro estouro real em header/footer sem dar pista nenhuma), <main> é o
+   único contêiner de conteúdo da página: qualquer rolagem horizontal legítima
+   do site inteiro vive dentro dele, então conter aqui é específico ao
+   componente que carrega o conteúdo, não uma rede de segurança genérica.
+   overflow-x, não overflow: a rolagem vertical do documento continua com o
+   <html>, como sempre foi. */
+main {
+  overflow-x: clip;
+}
+
+/* Foco nunca encoberto pelo cabeçalho (WCAG 2.2 AA 2.4.11, Etapa 14).
+   O .site-header é position: fixed, então quando o Tab leva o foco para um
+   elemento logo abaixo da dobra o navegador rola só o mínimo e o elemento
+   para debaixo do cabeçalho. O scroll-margin-top em "section" acima já
+   cobria âncoras, mas não o foco de um botão ou link solto no meio do
+   conteúdo. scroll-padding-top no elemento raiz resolve para qualquer
+   elemento focado, não só os que são início de seção. */
+html {
+  scroll-padding-top: calc(var(--header-height-actual, var(--header-height)) + var(--space-sm));
+  /* Rolagem suave nativa (Etapa 15). Substitui a biblioteca Lenis, que era
+     532 KB no pacote, mantinha um requestAnimationFrame rodando o tempo todo
+     e existia para servir uma única âncora real do site. Pior: ela dava
+     preventDefault em todo clique em href="#", o que matava o comportamento
+     nativo do skip link e deixava o foco parado nele, sem pular nada.
+     O nativo não tem nenhum desses problemas. */
+  scroll-behavior: smooth;
+}
+
+/* Quem pediu menos movimento não recebe rolagem animada. O reset global só
+   zera animation e transition, que não alcançam scroll-behavior. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Páginas internas (navegação multipágina): o cabeçalho é position: fixed,
+   então só o hero da home tem espaço próprio no topo — nas páginas internas
+   o <main> precisa compensar essa altura. */
+.page-main {
+  padding-top: var(--header-height-actual, var(--header-height));
+}
+
+/* ============================================================================
+   PRIMITIVAS: Stack, Cluster, Grid (Etapa 5)
+   ----------------------------------------------------------------------------
+   Blocos de composição genéricos e reutilizáveis, sem identidade visual
+   própria (sem cor, borda, fonte) — só organizam espaço entre filhos
+   diretos. Nenhuma seção existente foi convertida para usá-los: cada
+   seção mantém seu CSS específico por enquanto (item 7 do escopo desta
+   etapa: não redesenhar componentes ainda). Ficam prontos para quando uma
+   seção nova ou uma futura etapa de componentes precisar de um desses
+   padrões, em vez de escrever display:flex/grid do zero de novo.
+   ============================================================================ */
+
+/* Empilha filhos na vertical com espaçamento consistente entre eles.
+   Sobrescreva --stack-gap no elemento para um espaçamento diferente do
+   padrão. */
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--stack-gap, var(--space-md));
+}
+
+/* Agrupa filhos na horizontal, quebrando linha quando não couber — para
+   grupos como tags, badges ou botões que devem ficar juntos mas não têm
+   posição fixa individual. (O menu principal e as ações do hero não usam
+   esta classe: já tinham sua própria regra flex antes desta etapa, e
+   mudar isso seria redesenhar um componente existente, fora do escopo.) */
+.cluster {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--cluster-gap, var(--space-sm));
+}
+
+/* Grade responsiva sem media query: cada filho tem no mínimo
+   --grid-min-item (16rem por padrão) e a quantidade de colunas se ajusta
+   sozinha ao espaço disponível. min() com 100% evita vazamento horizontal
+   quando o container é mais estreito que o próprio mínimo (ex.: celular
+   muito pequeno). */
+.grid {
+  display: grid;
+  gap: var(--grid-gap, var(--space-lg));
+  grid-template-columns: repeat(auto-fit, minmax(min(var(--grid-min-item, 16rem), 100%), 1fr));
+}
+
+/* Variante de 12 colunas (item 3 do escopo desta etapa), disponível para
+   quando uma composição específica pedir alinhamento em coluna em vez de
+   auto-ajuste. minmax(0, 1fr), não 1fr puro: evita o mesmo vazamento de
+   grade que apareceu com texto grande na Etapa 4 (1fr sozinho não encolhe
+   abaixo do conteúdo mínimo de cada célula). Nenhuma seção usa esta
+   variante ainda — ver nota no topo deste bloco. */
+.grid--12 {
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+}
+
+/* O <main> recebe tabindex="-1" para ser destino do skip link (Etapa 15): sem
+   isso o foco não sai do próprio link e o "pular" não pula nada. O contorno
+   padrão desenharia uma moldura em volta da página inteira, que não ajuda
+   ninguém: quem chegou aqui já sabe onde está, e o próximo Tab vai para o
+   primeiro controle real, esse sim com foco visível. */
+main[tabindex='-1']:focus,
+main[tabindex='-1']:focus-visible {
+  outline: none;
+}

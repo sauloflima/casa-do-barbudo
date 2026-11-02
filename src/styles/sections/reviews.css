@@ -1,0 +1,112 @@
+/* ============================================================================
+   SEÇÃO: Avaliações
+   ----------------------------------------------------------------------------
+   Mesmos valores computados de antes. Esta seção tem fundo claro ("paper"),
+   então usa a paleta bruta diretamente em alguns pontos (os botões aqui não
+   seguem os tokens semânticos --color-gold/--color-gold-light redefinidos
+   por .on-paper — usam um tom próprio, ligeiramente diferente, que já era
+   assim antes desta reorganização).
+   ============================================================================ */
+
+.reviews {
+  border-block: 1px solid rgba(var(--palette-sand-text-950-rgb), 0.1);
+}
+
+.reviews-grid {
+  display: grid;
+  /* Mesma causa e a mesma correção do about.css: sem grid-template-columns
+     na base, a coluna implícita crescia pelo max-content do cartão de
+     avaliação em vez de respeitar a largura do container, vazando como
+     rolagem horizontal com texto ampliado a 200%. */
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-sm);
+  margin-bottom: var(--space-lg);
+}
+
+.review-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  padding: var(--space-md);
+  border: 1px solid var(--color-ink-line);
+  border-radius: var(--radius-sm);
+  background: rgba(var(--palette-white-rgb), 0.4);
+}
+
+.review-stars {
+  display: flex;
+  gap: 3px;
+  color: var(--color-gold);
+}
+
+.review-stars svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+  stroke: none;
+}
+
+.review-quote {
+  /* O depoimento se destaca pelo tamanho e peso, sem itálico sintético. */
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: var(--text-110);
+  font-style: normal;
+  line-height: 1.55;
+  color: var(--palette-sand-text-950);
+  max-width: 65ch;
+}
+
+.review-author {
+  margin-top: auto;
+  font-size: var(--text-88);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  color: var(--color-cream-dim);
+}
+
+.reviews-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  justify-content: center;
+}
+
+/* Botão dourado precisa de texto escuro para contraste no fundo claro */
+.on-paper .btn-primary {
+  background: linear-gradient(180deg, var(--palette-amber-500), var(--palette-amber-600));
+  color: var(--palette-sand-text-950);
+}
+
+.on-paper .btn-outline {
+  border-color: rgba(var(--palette-sand-text-950-rgb), 0.3);
+  color: var(--palette-sand-text-950);
+}
+
+.on-paper .btn-outline:hover {
+  border-color: var(--palette-amber-800);
+  color: var(--palette-amber-900);
+}
+
+@media (min-width: 45em) {
+  .reviews-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.on-paper .btn-primary { background: var(--palette-amber-500); }
+.on-paper .btn-outline:hover { background: transparent; }
+
+/* Trechos públicos, com autoria e acesso à fonte original. */
+.review-quote { margin: 0; }
+.review-source { display: inline-flex; align-items: center; min-height: 44px; color: var(--color-gold); font-size: var(--text-88); font-weight: 500; }
+@media (min-width: 64em) { .reviews-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+
+.reviews-rating { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 12px; margin-top: 16px; color: var(--color-cream-dim); font-size: var(--text-90); }
+.reviews-rating [role="img"] { font-size: 1.5rem; letter-spacing: .12em; }
+
+.review-stars { font-size: 1.25rem; letter-spacing: .12em; }
+
+.reviews-rating strong { font-size: 1.75rem; color: var(--color-cream); font-weight: 700; }
+.reviews-rating [role="img"] { color: var(--color-gold); font-size: 1.25rem; }
