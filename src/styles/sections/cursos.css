@@ -54,3 +54,18 @@
 .curso-inclusos h3 { margin-bottom: 12px; }
 .curso-inclusos p + p { margin-top: 12px; }
 @media (min-width: 48em) { .curso-turmas { grid-template-columns: repeat(2,minmax(0,1fr)); } }
+
+.curso-oferta { width: 100%; padding: 20px; border: 1px solid var(--color-gold-dim); border-radius: 16px; background: rgba(201,162,77,.045); }
+.curso-oferta .eyebrow { font-size: .75rem; }
+.curso-oferta-frase { margin-top: 10px; color: var(--color-cream); font-weight: 500; }
+.curso-oferta-preco { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 20px; margin-block: 12px; }
+.curso-oferta-preco > span { font-size: .95rem; color: var(--color-cream-dim); }
+.curso-oferta-preco strong { font-size: clamp(1.6rem,3vw,2.15rem); line-height: 1.2; color: var(--color-gold-light); font-variant-numeric: tabular-nums; }
+.curso-oferta-preco small { font-size: .95rem; font-weight: 400; }
+.curso-oferta-economia { color: var(--color-gold-light); font-size: .9rem; font-weight: 500; }
+.curso-oferta-nota { margin-top: 10px; font-size: .85rem; line-height: 1.5; color: var(--color-cream-dim); }
+@media (max-width: 47.999em) {
+  .curso-copy > .curso-oferta { order: 6; }
+  .curso-copy > .btn { order: 7; }
+  .curso-copy > .curso-note { order: 8; }
+}
