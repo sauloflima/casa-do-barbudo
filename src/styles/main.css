@@ -43,6 +43,7 @@
 @import './components/section-cta.css' layer(components);
 @import './components/reveal.css' layer(components);
 @import './components/whatsapp-float.css' layer(components);
+@import './components/course-promo.css' layer(components);
 @import './components/config-notice.css' layer(components);
 @import './components/header.css' layer(components);
 @import './components/footer.css' layer(components);

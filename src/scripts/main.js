@@ -1,3 +1,4 @@
+import { initCoursePromo } from './course-promo.js';
 import { initBooking } from './booking.js';
 import '../styles/main.css';
 import { initCareers } from './careers.js';
@@ -20,6 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initGaleria();
   initCareers();
   initBooking();
+  initCoursePromo();
   // Um só listener delegado (Etapa 13, item 5: evita contar o mesmo clique
   // duas vezes). Cobre botões estáticos e os que os módulos acima criam.
   initAnalyticsClicks();

@@ -8,3 +8,5 @@ Confirmar próximas datas, horários, local e investimento de cada turma. Duraç
 
 ## Campanha Black Friday
 Valores informados em 02/11/2026: de R$ 1.497,00 por R$ 1.197,00, economia R$ 300,00. Oferta aplicada às duas turmas por ter sido informado um único valor para os cursos. Definir encerramento da campanha e condições de pagamento com o responsável; não presumir parcelamento, vagas ou prazo. Revisar/remover a oferta quando a campanha terminar.
+
+Ao encerrar a Black Friday, retirar também o balão .course-promo das páginas e revisar os preços/mensagens. O botão de fechar dispensa o balão apenas na página atual; não grava preferências nem dados pessoais.
