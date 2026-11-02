@@ -384,3 +384,11 @@
 .nav-links a.nav-course:hover { border-color: rgba(201,162,77,.55); background: rgba(201,162,77,.07); }
 .nav-links a.nav-course::after { display: none; }
 .nav-links a.nav-course.is-active { text-decoration: underline; text-underline-offset: .3em; }
+
+/* Fluxo normal evita áreas de toque desatualizadas ao expandir details no Safari móvel. */
+@media (max-width: 74.999em) {
+  .site-nav.is-open { transform: none; }
+  .nav-links { display: block; flex: none; }
+  .nav-links > li + li { margin-top: var(--space-sm); }
+  .nav-cta { flex: none; }
+}
