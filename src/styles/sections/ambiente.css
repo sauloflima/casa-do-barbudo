@@ -49,3 +49,5 @@
 .home-catalogo span { color: var(--color-gold-light); margin-top: auto; font-weight: 600; }
 
 @media (max-width: 47.999em) { .ambiente-figure img { height: auto; aspect-ratio: auto; object-fit: contain; } }
+
+@media (max-width: 47.999em) { .ambiente { padding-block: 40px; } .ambiente-figure, .ambiente-text, .ambiente .section-cta { margin-top: 28px; } .home-catalogos { padding-block: 40px; } }

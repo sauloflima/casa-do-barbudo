@@ -9,3 +9,10 @@
 body:has(dialog[open]) .course-promo, body:has(.site-nav.is-open) .course-promo { display: none; }
 body:has(.course-promo:not([hidden])) { padding-bottom: 112px; }
 @media (max-width: 47.999em) { .course-promo { inset-inline-start: 12px; } }
+
+.course-promo.is-compact { width: min(280px, calc(100% - 24px)); }
+.course-promo.is-compact .course-promo-link { padding: 8px 10px; gap: 8px; }
+.course-promo.is-compact img { width: 32px; height: 32px; }
+.course-promo.is-compact .course-promo-link strong { font-size: .8rem; }
+.course-promo.is-compact .course-promo-link > span { font-size: .75rem; gap: 2px; }
+.course-promo.is-compact .course-promo-action { display: none; }

@@ -35,3 +35,15 @@ for(const name of ['index','sobre','servicos','produtos','assinaturas','equipe',
  assert.ok(!html.includes('14h às 19h'),name);
 }
 console.log('Conteúdo validado: 14 serviços, 17 produtos, 3 planos; nomes/preços em HTML, fotos locais, horários e ausência de placeholders.');
+
+const home = await readFile(new URL('index.html', root), 'utf8');
+assert.equal((home.match(/<article class="home-service">/g) || []).length, 3);
+for (const id of ['corte-diversos', 'barba', 'combo-corte-barba']) {
+  const item = servicos.find(s => s.id === id);
+  assert.ok(home.includes(`data-analytics-label="${item.nome}"`), item.nome);
+  assert.ok(home.includes(formatarPreco(item.preco)), item.nome);
+}
+const curso = await readFile(new URL('cursos.html', root), 'utf8');
+assert.ok(curso.includes('Curso presencial de barbearia'));
+assert.ok(!/>[^<]*workshop/i.test(curso));
+console.log('Prévia de serviços da home consistente com o catálogo; curso presencial padronizado.');

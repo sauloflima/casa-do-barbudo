@@ -88,3 +88,5 @@
   .team-photo img { height: auto; object-fit: contain; }
   .team-card:hover img { transform: none; }
 }
+
+@media (max-width: 47.999em) { .team:not(.team--intro) { padding-block: 40px; } .team-grid { gap: 32px; } .team .section-cta { margin-top: 28px; } }

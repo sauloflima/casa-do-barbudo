@@ -140,3 +140,5 @@
 }
 
 #sobre .about-text .about-role { margin-top: 8px; color: var(--color-gold-light); font-size: var(--text-100); font-weight: 500; }
+
+@media (max-width: 47.999em) { .about { padding-block: 40px; } .about .container { gap: 28px; } .about .section-cta { margin-top: 28px; } }

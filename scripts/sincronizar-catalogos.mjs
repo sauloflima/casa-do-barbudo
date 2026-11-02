@@ -6,7 +6,7 @@ import { assinaturas } from '../src/subscriptions.js';
 import { getWhatsappLink } from '../src/config.js';
 
 const h = (v) => String(v ?? '').replace(/[&<>"']/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const cta = (message, label, event, classes = 'btn btn-primary') => `<a class="${classes}" data-whatsapp-link data-whatsapp-message="${h(message)}" data-analytics-event="${event}" href="${h(getWhatsappLink(message))}" target="_blank" rel="noopener noreferrer">${h(label)}</a>`;
+const cta = (message, label, event, classes = 'btn btn-primary', analyticsLabel = '') => `<a class="${classes}" data-whatsapp-link${analyticsLabel ? ` data-analytics-label="${h(analyticsLabel)}"` : ''} data-whatsapp-message="${h(message)}" data-analytics-event="${event}" href="${h(getWhatsappLink(message))}" target="_blank" rel="noopener noreferrer">${h(label)}</a>`;
 async function preencher(file, marker, content) {
   const path = new URL(`../${file}`, import.meta.url);
   const text = await readFile(path, 'utf8');
@@ -15,6 +15,15 @@ async function preencher(file, marker, content) {
   const before = text.indexOf(start) + start.length, after = text.indexOf(end, before);
   await writeFile(path, text.slice(0, before) + '\n' + content + '\n' + text.slice(after));
 }
+
+const servicosHome = ['corte-diversos', 'barba', 'combo-corte-barba'].map(id => {
+  const servico = catalogo.categorias.flatMap(c => c.servicos).find(s => s.id === id);
+  if (!servico) throw new Error(`Serviço da home ausente: ${id}`);
+  return servico;
+});
+await preencher('index.html', 'servicos-home', `<div class="services-grid">
+${servicosHome.map(s => `<article class="home-service"><h3>${h(s.nome)}</h3><p class="service-price">${h(formatarPreco(s.preco))}</p>${cta(`Olá! Gostaria de agendar ${s.nome} na Casa do Barbudo.`, `Agendar ${s.nome.toLocaleLowerCase('pt-BR')}`, 'service_interest', 'btn btn-outline', s.nome)}</article>`).join('\n')}
+</div>`);
 
 await preencher('servicos.html', 'filtros-servicos', `<div class="catalogo-filtros" role="group" aria-label="Filtrar serviços por categoria">
 <button type="button" class="catalogo-filtro is-active" data-filtro="todos" aria-pressed="true">Todos</button>

@@ -19,7 +19,7 @@
   .curso-topic:last-child { grid-column: 1 / -1; }
 }
 
-/* Enquadramento concentra a foto no instrutor e na demonstração. */
+/* A demonstração é exibida inteira, preservando todos os participantes. */
 .curso-photo-stage { position: relative; }
 .curso-photo-stage picture { display: block; }
 .curso-cover img.curso-photo-aula { width: 100%; height: auto; aspect-ratio: auto; object-fit: contain; }
@@ -71,4 +71,12 @@
 
 @media (max-width: 47.999em) {
   .curso-cover img.curso-photo-aula { height: auto; aspect-ratio: auto; object-fit: contain; }
+}
+
+@media (max-width: 47.999em) {
+  .curso-copy > p:not([class]) { order: 4; }
+  .curso-copy > .curso-oferta { order: 5; }
+  .curso-copy > .btn { order: 6; }
+  .curso-copy > .curso-note { order: 7; }
+  .curso-cover--aula { order: 8; }
 }

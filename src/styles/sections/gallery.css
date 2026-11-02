@@ -227,3 +227,5 @@
 .gallery-item:not(.gallery-item--servico) { align-self: start; }
 .gallery-item:not(.gallery-item--servico) picture { display: block; }
 .gallery-item:not(.gallery-item--servico) .gallery-caption { position: static; background: var(--color-ink); padding: 12px 16px; font-size: var(--text-88); text-transform: none; letter-spacing: .02em; }
+
+@media (max-width: 47.999em) { .gallery { padding-block: 40px; } .gallery .section-cta { margin-top: 28px; } }
