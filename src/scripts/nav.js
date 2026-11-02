@@ -48,7 +48,8 @@ export function initNav() {
       if (matchMedia('(min-width: 75em)').matches && !group.contains(document.activeElement)) group.open = false;
     });
     group.addEventListener('focusout', event => {
-      if (!group.contains(event.relatedTarget)) group.open = false;
+      // Safari pode omitir o próximo foco ao tocar num link; não recolher antes do clique.
+      if (event.relatedTarget && !group.contains(event.relatedTarget)) group.open = false;
     });
   });
   document.addEventListener('click', event => {
