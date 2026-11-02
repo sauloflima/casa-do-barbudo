@@ -1,11 +1,6 @@
 export function initCoursePromo() {
   const promo = document.querySelector('.course-promo');
   if (!promo) return;
-  // Apenas uma preferência temporária; bloqueio do storage não impede fechar.
-  const dismissedKey = 'casa-course-promo-dismissed';
-  try {
-    if (sessionStorage.getItem(dismissedKey) === '1') { promo.remove(); return; }
-  } catch { /* Navegação privada pode bloquear o armazenamento. */ }
   const seenKey = 'casa-course-promo-seen';
   try {
     if (sessionStorage.getItem(seenKey) === '1') promo.classList.add('is-compact');
@@ -19,7 +14,6 @@ export function initCoursePromo() {
   compact();
   if (!promo.classList.contains('is-compact')) window.addEventListener('scroll', compact, { passive: true });
   promo.querySelector('button').addEventListener('click', () => {
-    try { sessionStorage.setItem(dismissedKey, '1'); } catch { /* Fechar continua disponível. */ }
     window.removeEventListener('scroll', compact);
     promo.remove();
   });
@@ -32,6 +26,6 @@ export function initCoursePromo() {
       });
       promo.hidden = visible.size > 0;
     }, { threshold: .01 });
-    document.querySelectorAll('.site-footer, .careers, .curso-oferta, .home-services').forEach(el => observer.observe(el));
+    document.querySelectorAll('.site-footer, .careers, .home-services').forEach(el => observer.observe(el));
   }
 }
