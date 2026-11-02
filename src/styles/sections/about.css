@@ -138,3 +138,5 @@
     direction: ltr;
   }
 }
+
+#sobre .about-text .about-role { margin-top: 8px; color: var(--color-gold-light); font-size: var(--text-100); font-weight: 500; }
